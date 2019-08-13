@@ -1,6 +1,6 @@
-package com.ugandaairlines.ugair.airport_aircraft.service;
+package com.ugandaairlines.ugair.airport.service;
 
-import com.ugandaairlines.ugair.airport_aircraft.model.Aircraft;
+import com.ugandaairlines.ugair.airport.model.Aircraft;
 
 public interface IAircraftService {
 	

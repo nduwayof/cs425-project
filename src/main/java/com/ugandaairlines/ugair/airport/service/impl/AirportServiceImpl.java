@@ -1,10 +1,10 @@
-package com.ugandaairlines.ugair.airport_aircraft.service.impl;
+package com.ugandaairlines.ugair.airport.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.ugandaairlines.ugair.airport_aircraft.model.Airport;
-import com.ugandaairlines.ugair.airport_aircraft.repository.IAirportRepository;
-import com.ugandaairlines.ugair.airport_aircraft.service.IAirportService;
+import com.ugandaairlines.ugair.airport.model.Airport;
+import com.ugandaairlines.ugair.airport.repository.IAirportRepository;
+import com.ugandaairlines.ugair.airport.service.IAirportService;
 
 @Service
 public class AirportServiceImpl implements IAirportService {

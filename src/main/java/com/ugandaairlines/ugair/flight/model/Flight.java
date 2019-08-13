@@ -1,7 +1,7 @@
 package com.ugandaairlines.ugair.flight.model;
 
-import com.ugandaairlines.ugair.airport_aircraft.model.Aircraft;
-import com.ugandaairlines.ugair.airport_aircraft.model.Airport;
+import com.ugandaairlines.ugair.airport.model.Aircraft;
+import com.ugandaairlines.ugair.airport.model.Airport;
 import com.ugandaairlines.ugair.booking.model.Booking;
 import lombok.Data;
 
