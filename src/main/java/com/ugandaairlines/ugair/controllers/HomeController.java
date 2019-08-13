@@ -12,4 +12,24 @@ public class HomeController {
         return "pages/web/index";
     }
 
+    @GetMapping(path = "/about")
+    public String about(){
+        return "pages/web/about";
+    }
+
+    @GetMapping(path = "/contact-us")
+    public String contact(){
+        return "pages/web/contact-us";
+    }
+
+    @GetMapping(path = "/faq")
+    public String faq(){
+        return "pages/web/faq";
+    }
+
+    @GetMapping(path = "/app/dashboard")
+    public String dashboard(){
+        return "pages/app/dashboard";
+    }
+
 }

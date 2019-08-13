@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ugandan Airlines"/>
+    <meta name="keywords"
+          content="fly, uganda, holiday, travel, reservation, tour, tourism, travel agency, trip, vacation, flight, destination, travel booking, airline"/>
+    <meta name="author" content="Fabrice Nduwayo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" th:href="@{/common/img/favicon.png}">
+
+    <link rel="stylesheet" th:href="@{/app/assets/css/morris.css}">
+    <link th:href="@{/app/assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/app/assets/css/metismenu.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/app/assets/css/icons.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/app/assets/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="header-bg">
+    <header id="topnav">
+        <th:block layout:insert="~{/layout/app/admin-header}"/>
+        <th:block layout:insert="~{/layout/app/admin-navbar}"/>
+    </header>
+</div>
+<div class="wrapper">
+    <div class="container-fluid">
+        <th:block layout:fragment="content">
+        </th:block>
+    </div>
+</div>
+<th:block  layout:insert="~{/layout/app/admin-footer}"/>
+</body>
+</html>

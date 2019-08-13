@@ -1,0 +1,102 @@
+/*------------------------------------------------------------------
+* Project:        Uganda Airlines Project
+* Authors:        Fabrice, Brian, Faustin
+* URL:
+* Created:        08/13/2019
+-------------------------------------------------------------------*/
+@media (min-width: 768px) {
+    .header-main .header-top .header-logo img {
+        height: 65px;
+    }
+    .footer-wrapper .post-footer{
+        margin-top: 25px;
+    }
+}
+@media (max-width: 768px) {
+    header{
+        height: 60px;
+    }
+    .header-main .header-top .header-logo img {
+        height: 45px;
+    }
+    .btn{
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 992px) {
+    .header-main .main-nav > li > a {
+        color: #FFF;
+    }
+    section, .section {
+        padding: 35px 0;
+    }
+    .footer-wrapper {
+        padding-top: 25px;
+    }
+}
+.header-main .header-top {
+    background-color: #FFF;
+    color: #000;
+}
+.header-main .dropdown > .btn:hover{
+    background: #000 !important;
+}
+.header-main .header-top{
+    padding: 0;
+}
+.header-main .header-nav {
+    background: #000 !important;
+    color: #FFF !important;
+}
+.header-main .main-nav > li:hover > a, .header-main .main-nav > li > a:hover {
+    color: #ED1C25;
+}
+.btn-outline-warning:hover{
+    background-color: #FFE118;
+}
+.hero-banner {
+    background-image: url('../images/image-bg/03.jpg') !important;
+}
+.menu-horizontal-02 {
+    background-color: #ED1C25;
+}
+.btn-primary {
+    background: #FFE118;
+    border-color: #FFE118;
+    color: #000;
+}
+.btn-secondary{
+    background: #ED1C25;
+    border-color: #ED1C25;
+    color: #FFF;
+}
+.header-main .btn.btn-toggle{
+    background-color: #000;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #ffe119;
+    background-color: #ffe119;
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #000;
+    border-color: #ffe119;
+    background-color: #ffe119;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #ffe119 !important;
+    background-color: #ffe119 !important;
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #000;
+    border-color: #ffe119;
+    background-color: #ffe119;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #ffe119;
+    background-color: #ffe119;
+}
+.pv-60 {
+    padding-top: 30px!important;
+    padding-bottom: 45px!important;
+}

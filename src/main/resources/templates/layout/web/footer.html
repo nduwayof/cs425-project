@@ -1,0 +1,74 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Uganda Airlines || Footer</title>
+</head>
+<body>
+<div th:fragment="footer">
+    <footer class="footer-wrapper scrollspy-stopper">
+        <div class="container">
+            <div class="row gap-40 gap-md-50">
+                <div class="col-12 col-lg-6">
+                    <div class="col-inner">
+                        <h4 class="footer-title">About us</h4>
+                        <p class="font-lg line-145">UgandaAirlines.com provides a complete set of solutions for flights, tours, travels, car rental,
+                            accommodations and passenger transportation to and from Uganda...<a href="/about">read more</a></p>
+                        <p class="footer-address mt-20">11/87, Kampala, Uganda, <br/>6760 Ave, St 94000
+                            <br/></p>
+                        <span class="d-block footer-phone text-white"><i class="material-icons">phone</i> +312-795-5634</span>
+                        <a href="/">support@ugandaairlines.com</a>
+
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="col-inner">
+                        <div class="row gap-40 gap-md-20">
+                            <div class="col-12 col-md-5">
+                                <div class="col-inner mt-15-sm">
+                                    <h5 class="footer-title">Quick Menu</h5>
+
+                                    <ul class="footer-menu">
+                                        <li><a href="/about">About Us</a></li>
+                                        <li><a href="/terms">Terms</a></li>
+                                        <li><a href="/faq">FAQ</a></li>
+                                        <li><a href="/press">Press</a></li>
+                                        <li><a href="contact-us">Contact</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-7">
+                                <div class="col-inner mt-25-sm">
+                                    <h5 class="footer-title">Newsletter</h5>
+                                    <p>Subsrribe to get our latest updates and offers</p>
+                                    <form class="footer-newsletter">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" placeholder="Email address">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-secondary" type="button">Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <h5 class="footer-title">Socials</h5>
+                                    <div class="footer-socials">
+                                        <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
+                                        <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                                        <a href="javascript:void(0)"><i class="fab fa-google-plus "></i></a>
+                                        <a href="javascript:void(0)"><i class="fab fa-codepen"></i></a>
+                                        <a href="javascript:void(0)"><i class="fab fa-behance"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post-footer">
+            <div class="container">
+                <p class="footer-copy-right">&#169; <span th:text="${#dates.year(#dates.createNow())}"></span> - Uganda Airlines. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
