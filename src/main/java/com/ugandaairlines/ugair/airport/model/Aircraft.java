@@ -6,18 +6,19 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
 @Data
+@Entity
+@Table(name = "aircrafts")
 public class Aircraft {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer aircraftId;
     private String registrationCode;
     private String aircraftModel;
-    private int ec_capacity;//economy class capacity
-    private int bc_capacity;//business class capacity
-   @OneToMany(mappedBy = "aircraft")
-    List<Flight>flights;
-
+    private int economyCapacity;
+    private int businessCapacity;
+    @OneToMany(mappedBy = "aircraft")
+    private List<Flight> flights;
 
 }
