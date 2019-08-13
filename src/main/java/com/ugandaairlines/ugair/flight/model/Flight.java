@@ -14,7 +14,7 @@ import java.util.List;
 public class Flight {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
@@ -27,12 +27,6 @@ public class Flight {
 
     @OneToOne
     private Aircraft aircraft;
-
-    @OneToMany(mappedBy = "flight")
-    private List<FlightCost>flightCosts;
-
-    @OneToMany(mappedBy = "flight")
-    private List<Booking> bookings;
 
     @Transient
     private String departureHour;

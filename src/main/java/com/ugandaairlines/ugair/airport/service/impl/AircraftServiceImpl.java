@@ -20,7 +20,6 @@ public class AircraftServiceImpl implements IAircraftService {
 
 	@Override
 	public Iterable<Aircraft> findAllAircrafts() {
-		
 		return aircraftRepository.findAll();
 	}
 
