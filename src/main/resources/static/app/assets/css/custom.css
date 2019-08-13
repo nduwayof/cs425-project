@@ -1,4 +1,10 @@
 hr.header-separator{
     margin-top: 15px;
     border: 2px solid #000;
+<<<<<<< HEAD
+=======
+}
+.datepicker {
+    z-index: 100000;
+>>>>>>> 9e578f1fcc2b468f37ab56db1cd6f94b9bb3781b
 }

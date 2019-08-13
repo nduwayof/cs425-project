@@ -12,20 +12,26 @@ import java.util.List;
 @Entity
 @Data
 public class Flight {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
+
     @OneToOne
     private Airport departureAirport;
+
     @OneToOne
     private Airport arrivalAirport;
+
     @OneToOne
     private Aircraft aircraft;
-    @OneToMany(mappedBy = "flight")
-    List<FlightCost>flightCosts;
-    @OneToMany(mappedBy = "flight")
-    List<Booking> bookings;
+
+    @Transient
+    private String departureHour;
+
+    @Transient
+    private String arrivalHour;
 
 }

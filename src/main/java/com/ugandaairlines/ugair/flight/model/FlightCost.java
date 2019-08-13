@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Data
 public class FlightCost {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightCoastId;
     private double cost;
     @Enumerated(EnumType.STRING)
