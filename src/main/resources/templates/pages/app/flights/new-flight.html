@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/app/admin-main-page}">
+<head>
+    <title>Uganda Airlines || New Flight</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="page-title-box">
+        <div class="row align-items-center">
+            <div class="col-sm-6">
+                <h4 class="page-title">New Flight</h4>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/app/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/app/flights">Flights</a></li>
+                    <li class="breadcrumb-item active"><a href="/app/flight/new">New Flight</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+                    <h4 class="mt-0 header-title">New Flight</h4>
+                    <hr class="header-separator"/>
+                    <form action="" th:object="${flight}">
+                       <div class="row">
+                           <div class="col-sm-6">
+                               <div class="form-group">
+                                   <label for="departureTime">Departure time</label>
+                                   <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                       <input type="text" id="departureTime" class="form-control datetimepicker-input" data-target="#datetimepicker1" th:field="*{departureTime}"/>
+                                       <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <label for="arrivalTime">Arrival Time</label>
+                                   <input type="text" id="arrivalTime" class="form-control" name="arrivalTime"  th:field="*{arrivalTime}" required placeholder="Type something"/>
+                               </div>
+                           </div>
+                       </div>
+
+
+                        <div class="form-group">
+                            <label>Digits</label>
+                            <div>
+                                <input data-parsley-type="digits" type="text"
+                                       class="form-control" required
+                                       placeholder="Enter only digits"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Number</label>
+                            <div>
+                                <input data-parsley-type="number" type="text"
+                                       class="form-control" required
+                                       placeholder="Enter only numbers"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Alphanumeric</label>
+                            <div>
+                                <input data-parsley-type="alphanum" type="text"
+                                       class="form-control" required
+                                       placeholder="Enter alphanumeric value"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Textarea</label>
+                            <div>
+                                <textarea required class="form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                    Submit
+                                </button>
+                                <button type="reset" class="btn btn-secondary waves-effect m-l-5">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
