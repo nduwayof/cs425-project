@@ -1,7 +1,9 @@
 package com.ugandaairlines.ugair.controllers;
 
 
+import com.ugandaairlines.ugair.flight.model.Flight;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -32,9 +34,6 @@ public class HomeController {
         return "pages/app/dashboard";
     }
 
-    @GetMapping(path = "/app/flights")
-    public String flights(){
-        return "pages/app/flights/flights";
-    }
+
 
 }
