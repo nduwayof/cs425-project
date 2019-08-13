@@ -1,4 +1,4 @@
-package com.ugandaairlines.ugair.controllers;
+package com.ugandaairlines.ugair.home_controllers;
 
 
 import org.springframework.stereotype.Controller;
