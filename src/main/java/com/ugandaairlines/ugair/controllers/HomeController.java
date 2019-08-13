@@ -32,4 +32,9 @@ public class HomeController {
         return "pages/app/dashboard";
     }
 
+    @GetMapping(path = "/app/flights")
+    public String flights(){
+        return "pages/app/flights";
+    }
+
 }
