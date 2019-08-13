@@ -12,16 +12,8 @@
     var AdvancedForm = function() {};
     
     AdvancedForm.prototype.init = function() {
-        //creating various controls
-
-        //colorpicker start
-        $('.colorpicker-default').colorpicker({
-            format: 'hex'
-        });
-        $('.colorpicker-rgba').colorpicker();
-
         // Date Picker
-        jQuery('#datepicker').datepicker();
+        jQuery('#departureTime').datepicker();
         jQuery('#datepicker-autoclose').datepicker({
             autoclose: true,
             todayHighlight: true

@@ -1,14 +1,12 @@
 package com.ugandaairlines.ugair.airport.model;
 
-import com.ugandaairlines.ugair.flight.model.Flight;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
-@Table(name = "aircrafts")
+@Table(name = "aircraft")
 public class Aircraft {
 
     @Id
@@ -18,7 +16,4 @@ public class Aircraft {
     private String aircraftModel;
     private int economyCapacity;
     private int businessCapacity;
-    @OneToMany(mappedBy = "aircraft")
-    private List<Flight> flights;
-
 }

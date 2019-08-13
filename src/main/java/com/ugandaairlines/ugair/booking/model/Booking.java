@@ -13,16 +13,13 @@ import java.util.List;
 @Data
 public class Booking {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
     @OneToOne
     private Flight flight;
     @OneToOne
-    private FlightCost flightCost;//comes with class and and cost minus taxes
-    @OneToMany(mappedBy = "booking")
-    private List<Payment>payments;
-    @OneToOne(mappedBy = "booking")
-    private Ticket ticket;
+    private FlightCost flightCost;
+
     @OneToOne
     private Passenger passenger;
 

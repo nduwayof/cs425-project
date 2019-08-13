@@ -13,11 +13,13 @@
 
     <link rel="shortcut icon" th:href="@{/common/img/favicon.png}">
 
+    <link rel="stylesheet" th:href="@{/app/assets/css/bootstrap-datepicker.min.css}">
     <link rel="stylesheet" th:href="@{/app/assets/css/morris.css}">
     <link th:href="@{/app/assets/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/app/assets/css/metismenu.min.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/app/assets/css/icons.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/app/assets/css/style.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/app/assets/css/custom.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="header-bg">
@@ -33,5 +35,22 @@
     </div>
 </div>
 <th:block  layout:insert="~{/layout/app/admin-footer}"/>
+<script th:src="@{/app/assets/js/jquery.min.js}"></script>
+<script th:src="@{/app/assets/js/popper.min.js}"></script>
+<script th:src="@{/app/assets/js/moment.min.js}"></script>
+<script th:src="@{/app/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{/app/assets/js/jquery.slimscroll.js}"></script>
+<script th:src="@{/app/assets/js/waves.min.js}"></script>
+<script th:src="@{/app/assets/js/morris.min.js}"></script>
+<script th:src="@{/app/assets/js/raphael.min.js}"></script>
+<script th:src="@{/app/assets/js/parsley.min.js}"></script>
+<script th:src="@{/app/assets/js/bootstrap-datepicker.min.js}"></script>
+<script th:src="@{/app/assets/pages/form-advanced.js}"></script>
+<script th:src="@{/app/assets/js/app.js}"></script>
+<script>
+    $(document).ready(function() {
+        $('form').parsley();
+    });
+</script>
 </body>
 </html>
