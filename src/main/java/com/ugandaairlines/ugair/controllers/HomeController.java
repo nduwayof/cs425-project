@@ -34,7 +34,7 @@ public class HomeController {
 
     @GetMapping(path = "/app/flights")
     public String flights(){
-        return "pages/app/flights";
+        return "pages/app/flights/flights";
     }
 
 }
