@@ -10,14 +10,13 @@ import java.util.List;
 @Data
 public class Aircraft {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer aircraftId;
     private String registrationCode;
     private String aircraftModel;
-    private int ec_capacity;//economy class capacity
-    private int bc_capacity;//business class capacity
-   @OneToMany(mappedBy = "aircraft")
-    List<Flight>flights;
+    private int economyCapacity;//economy class capacity
+    private int businessCapacity;//business class capacity
+
 
 
 }
