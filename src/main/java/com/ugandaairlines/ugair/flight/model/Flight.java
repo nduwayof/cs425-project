@@ -2,12 +2,12 @@ package com.ugandaairlines.ugair.flight.model;
 
 import com.ugandaairlines.ugair.airport.model.Aircraft;
 import com.ugandaairlines.ugair.airport.model.Airport;
-import com.ugandaairlines.ugair.booking.model.Booking;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -27,6 +27,14 @@ public class Flight {
 
     @OneToOne
     private Aircraft aircraft;
+
+    @Transient
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate departureDate;
+
+    @Transient
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate arrivalDate;
 
     @Transient
     private String departureHour;
