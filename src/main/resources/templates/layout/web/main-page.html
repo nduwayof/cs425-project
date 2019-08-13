@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ugandan Airlines"/>
+    <meta name="keywords"
+          content="fly, uganda, holiday, travel, reservation, tour, tourism, travel agency, trip, vacation, flight, destination, travel booking, airline"/>
+    <meta name="author" content="Fabrice Nduwayo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Uganda Airlines || Home</title>-->
+    <link rel="shortcut icon" th:href="@{/common/img/favicon.png}">
+    <link th:href="@{/web/css/font-icons.css}" rel="stylesheet">
+    <link th:href="@{/web/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/web/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/web/css/main.css}" rel="stylesheet">
+    <link th:href="@{/web/css/plugin.css}" rel="stylesheet">
+    <link th:href="@{/web/css/style.css}" rel="stylesheet">
+    <link th:href="@{/web/css/custom.css}" rel="stylesheet">
+</head>
+<body class="with-waypoint-sticky">
+<div class="body-inner">
+    <th:block layout:insert="~{/layout/web/navbar}"/>
+    <div class="main-wrapper scrollspy-action">
+        <th:block layout:fragment="content">
+        </th:block>
+    </div>
+    <th:block layout:insert="~{/layout/web/footer}"/>
+</div>
+<a id="back-to-top" href="/#" class="back-to-top" role="button"
+   title="Click to return to top" data-toggle="tooltip" data-placement="left">
+    <i class="bx bx-chevron-up"></i>
+</a>
+<script th:src="@{/web/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/web/js/plugins.js}"></script>
+<script type="text/javascript" th:src="@{/web/js/custom-core.js}"></script>
+<script type="text/javascript" th:src="@{/web/js/plugins/jquery.typeahead.min.js}"></script>
+<script type="text/javascript" th:src="@{/web/js/custom-autocomplete.js}"></script>
+</body>
+</html>

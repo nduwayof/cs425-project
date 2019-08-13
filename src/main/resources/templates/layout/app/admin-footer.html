@@ -1,0 +1,16 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Uganda Airlines || Footer</title>
+</head>
+<body>
+<div th:fragment="footer">
+    <footer class="footer">
+        © <span th:text="${#dates.year(#dates.createNow())}"></span> Uganda Airlines
+        <span class="d-none d-sm-inline-block">
+            <i class="mdi mdi-heart text-danger"></i>
+            All Rights Reserved.
+        </span>
+    </footer>
+</div>
+</body>
+</html>
