@@ -10,10 +10,12 @@ public class FlightCost {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer flightCoastId;
+    private double cost;
+    @Enumerated(EnumType.STRING)
+    private EFlightType flightType;
     @OneToOne
     private FlightClass flightClass;
     @OneToOne
     private Flight flight;
-    private double cost;
 
 }

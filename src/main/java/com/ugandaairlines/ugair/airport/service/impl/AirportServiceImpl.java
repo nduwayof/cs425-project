@@ -1,5 +1,6 @@
 package com.ugandaairlines.ugair.airport.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ugandaairlines.ugair.airport.model.Airport;
@@ -8,7 +9,8 @@ import com.ugandaairlines.ugair.airport.service.IAirportService;
 
 @Service
 public class AirportServiceImpl implements IAirportService {
-	
+
+	@Autowired
 	private IAirportRepository airportRepository;
 
 	@Override
