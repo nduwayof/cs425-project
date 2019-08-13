@@ -1,12 +1,13 @@
 package com.ugandaairlines.ugair.person.model;
 
-import com.ugandaairlines.ugair.booking.model.Booking;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
 public class Passenger extends Person {
 
-    @OneToMany(mappedBy = "passenger")
-    List<Booking> bookings;
 }
