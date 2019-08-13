@@ -1,11 +1,10 @@
 package com.ugandaairlines.ugair.airport.model;
 
+import com.ugandaairlines.ugair.flight.model.Flight;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,4 +16,5 @@ public class Airport {
     private String airportName;
     private String city;
     private String country;
+
 }
