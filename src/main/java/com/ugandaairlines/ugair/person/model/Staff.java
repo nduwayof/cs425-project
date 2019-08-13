@@ -8,10 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
+@Entity
 public class Staff extends Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer personId;
+
     private String position;
 }
