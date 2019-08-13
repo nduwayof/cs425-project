@@ -1,13 +1,13 @@
 package com.ugandaairlines.ugair.person.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@MappedSuperclass
 public class Person {
 
-    private String firstName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer personId;    private String firstName;
     private String middleName;
     private String lastName;
     private EGender gender;

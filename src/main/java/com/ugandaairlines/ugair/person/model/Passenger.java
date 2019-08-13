@@ -5,10 +5,8 @@ import com.ugandaairlines.ugair.booking.model.Booking;
 import javax.persistence.*;
 import java.util.List;
 @Entity
-public class Passenger {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer personId;
+public class Passenger extends Person {
+
     @OneToMany(mappedBy = "passenger")
     List<Booking> bookings;
 }
