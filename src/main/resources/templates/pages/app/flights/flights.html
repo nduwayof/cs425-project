@@ -53,6 +53,7 @@
                                 <td th:text="${flight.getAircraft().aircraftModel+' '+flight.getAircraft().registrationCode}"/>
                                 <!--Adding a button for update -->
 
+
                                 <td>
                                     <button class="btn btn-warning btn-sm  glyphicon glyphicon-pencil "
                                             th:onclick="'javascript:myUpdateFunction(\''+ ${flight.flightId} +'\');'">&nbsp;Update</button>
@@ -72,6 +73,29 @@
             </div>
         </div>
     </div>
+
+<script>
+    function myUpdateFunction(s) {
+        if (confirm("Alert!!!!!!\nAre you sure you want to modify flight information?")) {
+
+            window.location.href = '/app/flights/update?flightId='.concat(s);
+
+        }
+
+    }
+    function myDelFunction(s) {
+        if (confirm("Alert!!!!!!\nAre you sure you want to delete the flight".concat(s).concat("?"))) {
+
+            window.location.href = '/app/flights/delete?flightId='.concat(s);
+            window.alert('Successfully Deleted');
+        }
+
+
+    }
+
+
+</script>
+
 </th:block>
 </body>
 </html>
