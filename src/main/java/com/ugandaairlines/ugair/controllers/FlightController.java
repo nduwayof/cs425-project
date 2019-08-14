@@ -7,6 +7,7 @@ import com.ugandaairlines.ugair.airport.service.IAirportService;
 import com.ugandaairlines.ugair.flight.model.Flight;
 import com.ugandaairlines.ugair.flight.service.IFlightService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -98,5 +99,18 @@ public class FlightController {
         modelAndView.setViewName("pages/app/flights/flights");
         return modelAndView;
     }
+    @PostMapping("/flights/search")
+    public ModelAndView search(@RequestParam String search, @RequestParam(defaultValue = "0") int pageno) {
+        Page<Flight> flights = flightService.search(search, pageno);
+        long numberOfFlights = flights.getTotalElements();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("flights", flights);
+        modelAndView.addObject("currPageNo", pageno);
+        modelAndView.addObject("numberOfFlights", numberOfFlights);
+        modelAndView.addObject("flashBack", "/flights/search?search=" + search);
+        modelAndView.setViewName("pages/app/flights/flights");
+        return modelAndView;
+    }
+
 
 }
