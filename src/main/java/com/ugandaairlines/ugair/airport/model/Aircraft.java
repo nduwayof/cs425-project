@@ -6,17 +6,58 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
 @Data
+@Entity
+@Table(name = "aircraft")
 public class Aircraft {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer aircraftId;
     private String registrationCode;
     private String aircraftModel;
-    private int economyCapacity;//economy class capacity
-    private int businessCapacity;//business class capacity
+    private int economyCapacity;
+    private int businessCapacity;
+    @OneToMany(mappedBy = "aircraft")
+    List<Flight> flights;
 
+    public Integer getAircraftId() {
+        return aircraftId;
+    }
 
+    public void setAircraftId(Integer aircraftId) {
+        this.aircraftId = aircraftId;
+    }
 
+    public String getRegistrationCode() {
+        return registrationCode;
+    }
+
+    public void setRegistrationCode(String registrationCode) {
+        this.registrationCode = registrationCode;
+    }
+
+    public String getAircraftModel() {
+        return aircraftModel;
+    }
+
+    public void setAircraftModel(String aircraftModel) {
+        this.aircraftModel = aircraftModel;
+    }
+
+    public int getEconomyCapacity() {
+        return economyCapacity;
+    }
+
+    public void setEconomyCapacity(int economyCapacity) {
+        this.economyCapacity = economyCapacity;
+    }
+
+    public int getBusinessCapacity() {
+        return businessCapacity;
+    }
+
+    public void setBusinessCapacity(int businessCapacity) {
+        this.businessCapacity = businessCapacity;
+    }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/app/admin-main-page}">
 <head>
@@ -28,86 +28,95 @@
                 <div class="card-body">
                     <h4 class="mt-0 header-title">New Flight</h4>
                     <hr class="header-separator"/>
-                    <form action="" th:object="${flight}">
+                    <form action="#" th:action="@{/app/flights/save}" th:object="${flight}" method="post">
                         <div class="row">
+<!--                            The input components starts here-->
+
+
+
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="departureTime">Departure Date</label>
+                                    <label for="departureAirport">Departure Airport</label>
+                                <select class="form-control" th:field="*{departureAirport}"  id="departureAirport">
+                                    <option value="0">Select Airport</option>
+                                    <option th:each="airport : ${airports}" th:value="${airport.airportId}" th:text="${airport.airportName}"></option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="arrivalAirport">Arrival Airport</label>
+                                <select class="form-control" th:field="*{arrivalAirport}"  id="arrivalAirport">
+                                    <option value="0">Select Airport</option>
+                                    <option th:each="airport : ${airports}" th:value="${airport.airportId}" th:text="${airport.airportName}"></option>
+                                </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="arrivalAirport">Aircraft</label>
+                                    <select class="form-control" th:field="*{aircraft}"  id="aircraft">
+                                        <option value="0">Select Aircraft</option>
+                                        <option th:each="aircraft : ${aircrafts}" th:value="${aircraft.aircraftId}" th:text="${aircraft.registrationCode}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="departureHour">Departure Date/Time</label>
                                     <div class="input-group">
-                                        <input id="departureTime" type="text" class="form-control" placeholder="mm/dd/yyyy" name="departureTime" th:field="*{departureTime}">
+                                        <input id="departureHour" type="datetime-local" class="form-control" placeholder="mm/dd/yyyy" name="departureHour" th:field="*{departureHour}">
                                         <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="fa fa-calendar"></i></span></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="departureHour">Departure Time</label>
-                                    <input id="departureHour" type="text" class="form-control" name="departureHour"
-                                           th:field="*{departureHour}"
-                                           required placeholder="Type something"/>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="arrivalTime">Arrival Date</label>
-                                    <input id="arrivalTime" type="text" class="form-control" name="arrivalTime"
-                                           th:field="*{arrivalTime}"
-                                           required placeholder="Type something"/>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="arrivalHour">Arrival Time</label>
-                                    <input id="arrivalHour" type="text" class="form-control" name="arrivalHour"
-                                           th:field="*{arrivalHour}"
-                                           required placeholder="Type something"/>
+                                    <label for="arrivalHour">Arrival Date/Time</label>
+                                    <div class="input-group">
+                                        <input id="arrivalHour" type="datetime-local" class="form-control" placeholder="mm/dd/yyyy" name="arrivalHour" th:field="*{arrivalHour}">
+                                        <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i class="fa fa-calendar"></i></span></div>
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="economyCost">Economy Class Fair</label>
+                                    <div>
+                                <input type="number" id="economyCost" step="0.01" min="0" class="form-control" name="economyCost" th:field="*{economyCost}" required  placeholder="Fair e.g 1000.5"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="businessCost">Business Class Fair</label>
+                                    <div>
+                                <input type="number" id="businessCost" step="0.01" min="0" class="form-control" name="businessCost" th:field="*{businessCost}" required  placeholder="Fair e.g 1000.5"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </div>
 
 
 
-                        <div class="form-group">
-                            <label>Digits</label>
-                            <div>
-                                <input data-parsley-type="digits" type="text"
-                                       class="form-control" required
-                                       placeholder="Enter only digits"/>
+                        <div class="col-md-3" style="float: right;">
+                            <div class="col-md-4" style="float: left;">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-4" style="float: left">
+                                <button type="reset" class="btn btn-primary">Clear</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Number</label>
-                            <div>
-                                <input data-parsley-type="number" type="text"
-                                       class="form-control" required
-                                       placeholder="Enter only numbers"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Alphanumeric</label>
-                            <div>
-                                <input data-parsley-type="alphanum" type="text"
-                                       class="form-control" required
-                                       placeholder="Enter alphanumeric value"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Textarea</label>
-                            <div>
-                                <textarea required class="form-control" rows="5"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div>
-                                <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                    Submit
-                                </button>
-                                <button type="reset" class="btn btn-secondary waves-effect m-l-5">
-                                    Cancel
-                                </button>
-                            </div>
-                        </div>
+
                     </form>
 
                 </div>
