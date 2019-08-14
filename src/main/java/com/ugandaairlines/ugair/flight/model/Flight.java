@@ -17,7 +17,17 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer flightId;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private String flightNumber;
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime departureTime;
 
     private LocalDateTime arrivalTime;
