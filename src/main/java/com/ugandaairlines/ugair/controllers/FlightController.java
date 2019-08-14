@@ -90,16 +90,18 @@ public class FlightController {
     }
 
     @GetMapping(path = "/app/flights")
-    public ModelAndView customerList(@RequestParam(defaultValue = "0") int pageNo) {
+    public ModelAndView customerList(@RequestParam(defaultValue = "0") int pageno) {
         ModelAndView modelAndView = new ModelAndView();
-        Iterable<Flight> flights = flightService.findAllFlights();
-        //long numberOfCustomers = flights.getTotalElements();
-        modelAndView.addObject("currPageNo", pageNo);
+        Page<Flight> flights = flightService.findAllFlights(pageno);
+        long numberOfFlights = flights.getTotalElements();
+        modelAndView.addObject("currPageNo", pageno);
         modelAndView.addObject("flights", flights);
+        modelAndView.addObject("flashBack", "/app/flights");
         modelAndView.setViewName("pages/app/flights/flights");
         return modelAndView;
     }
-    @PostMapping("/flights/search")
+
+    @GetMapping("/flights/search")
     public ModelAndView search(@RequestParam String search, @RequestParam(defaultValue = "0") int pageno) {
         Page<Flight> flights = flightService.search(search, pageno);
         long numberOfFlights = flights.getTotalElements();
