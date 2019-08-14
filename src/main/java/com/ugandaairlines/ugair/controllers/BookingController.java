@@ -43,10 +43,10 @@ public class BookingController {
 
                 );
 
-        logger.log(Level.SEVERE,"cvbb"+ flights.toString());
+       logger.log(Level.SEVERE,"cvbb"+ flights);
 
         model.addAttribute("flights",flights);
 
-        return "pages/web/flight-booking-search";
+        return "pages/web/index";
     }
 }
