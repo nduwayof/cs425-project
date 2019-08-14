@@ -44,9 +44,8 @@ public class BookingController {
                 );
 
         logger.log(Level.SEVERE,"cvbb"+ flights.toString());
-
         model.addAttribute("flights",flights);
 
-        return "pages/web/flight-booking-search";
+        return "pages/web/search-flights";
     }
 }
