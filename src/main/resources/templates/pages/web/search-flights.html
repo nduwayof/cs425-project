@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/web/main-page}">
 <head>
-    <title>Uganda Airlines || Search results</title>
+    <title>Uganda Airlines || Home</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -26,8 +26,8 @@
                         <div class="content-wrapper">
                             <div class="d-lg-flex mb-30 mb-lg-0">
                                 <div>
-                                    <h3 class="heading-title"><span>Flights <span class="text-lowercase">in</span> </span> <span class="text-primary">Rome, Italy</span></h3>
-                                    <p class="text-muted post-heading">2478 results found available now</p>
+                                    <h3 class="heading-title"><span>Flights <span class="text-lowercase">in</span> </span> <span class="text-primary" th:text="${destination.city} + ' , ' + ${destination.country} ">Rome, Italy</span></h3>
+                                    <p class="text-muted post-heading" th:text="' Results Found : ' + ${totalResults}"></p>
                                 </div>
                                 <div class="ml-auto">
                                     <button class="btn btn-secondary btn-wide btn-toggle collapsed btn-sm btn-change-search" data-toggle="collapse" data-target="#change-search"></button>
@@ -165,7 +165,7 @@
                                             <div class="sorting-middle-holder">
                                                 <ul class="sort-by">
                                                     <li class="active up"><a href="javascript:void(0)">Name <em class="fas fa-long-arrow-alt-down"></em></a></li>
-                                                    <li><a href="javascript:void(0)">Price</a></li>
+                                                    <li><a th:href="@{''}">Price</a></li>
                                                     <li><a href="javascript:void(0)">Departure Airport</a></li>
                                                     <li><a href="javascript:void(0)">Destination Airport</a></li>
                                                 </ul>
@@ -176,7 +176,7 @@
 
                             </div>
 
-                            <div class="product-long-item-wrapper">
+                            <div class="product-long-item-wrapper" th:each="flight : ${flights}">
 
                                 <div class="product-long-item">
 
@@ -201,8 +201,8 @@
                                                         <div>
 
                                                             <p class="rating-text text-muted font13">One-way flight, non-stop</p>
-                                                            <h5><a href="javascript:void(0)">Paris, France</a></h5>
-                                                            <p class="location">From Bangkok, Thailand</p>
+                                                            <h5><a href="javascript:void(0)" th:text="${flight.arrivalAirport.airportCode} + ' ' + ${flight.arrivalAirport.airportName} + ' : ' + ${flight.arrivalAirport.city} + ' , ' + ${flight.arrivalAirport.country}"></a></h5>
+                                                            <p class="location" th:text="${flight.departureAirport.airportCode} + ' ' + ${flight.departureAirport.airportName} + ' : ' + ${flight.departureAirport.city} + ' , ' + ${flight.departureAirport.country}"></p>
 
                                                         </div>
 
@@ -219,20 +219,20 @@
                                                 </div>
 
                                                 <div class="content">
-                                                    <p>New the her nor case that lady paid read eat everything the out two...</p>
+                                                    <p th:text=" 'Flight No.:   ' + ' , Aircraft : ' + ${flight.aircraft.aircraftModel} + ' , Seats remaining : ' + ${flight.aircraft.economyCapacity} "></p>
                                                 </div>
 
                                                 <div class="content-bottom mt-auto">
                                                     <div class="d-flex align-items-center">
                                                         <div>
                                                             <p>
-                                                                <em class="far fa-clock mt-10"></em> Offer end: <b>11/05/2019</b>
+                                                                <em class="far fa-clock mt-10"></em> Offer end: <b th:text="${flight.arrivalTime}"></b>
                                                             </p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
+                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">
                                                                 <em class="fa fa-search"></em>
-                                                                Details
+                                                                Book Flight
                                                             </a>
                                                         </div>
                                                     </div>
@@ -246,341 +246,7 @@
 
                                 </div>
 
-                                <div class="product-long-item">
 
-                                    <div class="row equal-height shrink-auto-md gap-15">
-
-                                        <div class="col-12 col-shrink">
-
-                                            <div class="image height-auto">
-                                                <img th:src="@{/web/images/img-placeholder.jpg}" alt="images"  src=""/>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-12 col-auto">
-
-                                            <div class="col-inner d-flex flex-column">
-
-                                                <div class="content-top">
-
-                                                    <div class="d-flex">
-
-                                                        <div>
-
-                                                            <p class="rating-text text-muted font13">Return flight, 1 stop</p>
-                                                            <h5><a href="javascript:void(0)">New York, USA</a></h5>
-                                                            <p class="location">From Bangkok, Thailand</p>
-
-                                                        </div>
-
-                                                        <div class="ml-auto">
-                                                            <div class="price">
-                                                                start from
-                                                                <span class="text-secondary">$895</span>
-                                                                per person
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="content">
-                                                    <p>New the her nor case that lady paid read eat everything the out two...</p>
-                                                </div>
-
-                                                <div class="content-bottom mt-auto">
-                                                    <div class="d-flex align-items-center">
-                                                        <div>
-                                                            <p>
-                                                                <em class="far fa-clock mt-10"></em> Offer end: <b>11/05/2019</b>
-                                                            </p>
-                                                        </div>
-                                                        <div class="ml-auto">
-                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
-                                                                <em class="fa fa-search"></em>
-                                                                Details
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-long-item">
-
-                                    <div class="row equal-height shrink-auto-md gap-15">
-
-                                        <div class="col-12 col-shrink">
-
-                                            <div class="image height-auto">
-                                                <img th:src="@{/web/images/img-placeholder.jpg}" alt="images"  src=""/>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-12 col-auto">
-
-                                            <div class="col-inner d-flex flex-column">
-
-                                                <div class="content-top">
-
-                                                    <div class="d-flex">
-
-                                                        <div>
-
-                                                            <p class="rating-text text-muted font13">Return flight, non-stop</p>
-                                                            <h5><a href="javascript:void(0)">Rome, Italy</a></h5>
-                                                            <p class="location">From London, UK</p>
-
-                                                        </div>
-
-                                                        <div class="ml-auto">
-                                                            <div class="price">
-                                                                start from
-                                                                <span class="text-secondary">$895</span>
-                                                                per person
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="content">
-                                                    <p>New the her nor case that lady paid read eat everything the out two...</p>
-                                                </div>
-
-                                                <div class="content-bottom mt-auto">
-                                                    <div class="d-flex align-items-center">
-                                                        <div>
-                                                            <p>
-                                                                <em class="far fa-clock mt-10"></em> Offer end: <b>11/05/2019</b>
-                                                            </p>
-                                                        </div>
-                                                        <div class="ml-auto">
-                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
-                                                                <em class="fa fa-search"></em>
-                                                                Details
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-long-item">
-
-                                    <div class="row equal-height shrink-auto-md gap-15">
-
-                                        <div class="col-12 col-shrink">
-
-                                            <div class="image height-auto">
-                                                <img th:src="@{/web/images/img-placeholder.jpg}" alt="images"  src=""/>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-12 col-auto">
-
-                                            <div class="col-inner d-flex flex-column">
-
-                                                <div class="content-top">
-
-                                                    <div class="d-flex">
-
-                                                        <div>
-
-                                                            <p class="rating-text text-muted font13">One-way flight, non-stop</p>
-                                                            <h5><a href="javascript:void(0)">Paris, France</a></h5>
-                                                            <p class="location">From Bangkok, Thailand</p>
-
-                                                        </div>
-
-                                                        <div class="ml-auto">
-                                                            <div class="price">
-                                                                start from
-                                                                <span class="text-secondary">$895</span>
-                                                                per person
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="content">
-                                                    <p>New the her nor case that lady paid read eat everything the out two...</p>
-                                                </div>
-
-                                                <div class="content-bottom mt-auto">
-                                                    <div class="d-flex align-items-center">
-                                                        <div>
-                                                            <p>
-                                                                <em class="far fa-clock mt-10"></em> Offer end: <b>11/05/2019</b>
-                                                            </p>
-                                                        </div>
-                                                        <div class="ml-auto">
-                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
-                                                                <em class="fa fa-search"></em>
-                                                                Details
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-long-item">
-
-                                    <div class="row equal-height shrink-auto-md gap-15">
-
-                                        <div class="col-12 col-shrink">
-
-                                            <div class="image height-auto">
-                                                <img th:src="@{/web/images/img-placeholder.jpg}" alt="images"  src=""/>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-12 col-auto">
-
-                                            <div class="col-inner d-flex flex-column">
-
-                                                <div class="content-top">
-
-                                                    <div class="d-flex">
-
-                                                        <div>
-
-                                                            <p class="rating-text text-muted font13">Return flight, 1 stop</p>
-                                                            <h5><a href="javascript:void(0)">New York, USA</a></h5>
-                                                            <p class="location">From Bangkok, Thailand</p>
-
-                                                        </div>
-
-                                                        <div class="ml-auto">
-                                                            <div class="price">
-                                                                start from
-                                                                <span class="text-secondary">$895</span>
-                                                                per person
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="content">
-                                                    <p>New the her nor case that lady paid read eat everything the out two...</p>
-                                                </div>
-
-                                                <div class="content-bottom mt-auto">
-                                                    <div class="d-flex align-items-center">
-                                                        <div>
-                                                            <p><i class="far fa-clock mt-10"></i> Offer end: <strong>11/05/2019</strong></p>
-                                                        </div>
-                                                        <div class="ml-auto">
-                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
-                                                                <em class="fa fa-search"></em>
-                                                                Details
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="product-long-item">
-
-                                    <div class="row equal-height shrink-auto-md gap-15">
-
-                                        <div class="col-12 col-shrink">
-
-                                            <div class="image height-auto">
-                                                <img th:src="@{/web/images/img-placeholder.jpg}" alt="images"  src=""/>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-12 col-auto">
-
-                                            <div class="col-inner d-flex flex-column">
-
-                                                <div class="content-top">
-
-                                                    <div class="d-flex">
-
-                                                        <div>
-
-                                                            <p class="rating-text text-muted font13">Return flight, non-stop</p>
-                                                            <h5><a href="javascript:void(0)">Rome, Italy</a></h5>
-                                                            <p class="location">From London, UK</p>
-
-                                                        </div>
-
-                                                        <div class="ml-auto">
-                                                            <div class="price">
-                                                                start from
-                                                                <span class="text-secondary">$895</span>
-                                                                per person
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="content">
-                                                    <p>New the her nor case that lady paid read eat everything the out two...</p>
-                                                </div>
-
-                                                <div class="content-bottom mt-auto">
-                                                    <div class="d-flex align-items-center">
-                                                        <div>
-                                                            <p><em class="far fa-clock mt-10"></em> Offer end: <strong>11/05/2019</strong></p>
-                                                        </div>
-                                                        <div class="ml-auto">
-                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
-                                                                <em class="fa fa-search"></em>
-                                                                Details
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
 
                             </div>
 
@@ -598,33 +264,42 @@
                                             <nav class="float-lg-right mt-10 mt-md-0">
                                                 <ul class="pagination justify-content-center justify-content-lg-left">
                                                     <li>
-                                                        <a href="javascript:void(0)" aria-label="Previous">
+                                                        <a href="page-result-flight-list-02.html#" aria-label="Previous">
                                                             <span aria-hidden="true">&laquo;</span>
                                                         </a>
                                                     </li>
-                                                    <li class="active"><a href="javascript:void(0)">1</a></li>
-                                                    <li><a href="javascript:void(0)">2</a></li>
-                                                    <li><a href="javascript:void(0)">3</a></li>
+                                                    <li class="active"><a href="page-result-flight-list-02.html#">1</a></li>
+                                                    <li><a href="page-result-flight-list-02.html#">2</a></li>
+                                                    <li><a href="page-result-flight-list-02.html#">3</a></li>
                                                     <li><span>...</span></li>
-                                                    <li><a href="javascript:void(0)">11</a></li>
-                                                    <li><a href="javascript:void(0)">12</a></li>
-                                                    <li><a href="javascript:void(0)">13</a></li>
+                                                    <li><a href="page-result-flight-list-02.html#">11</a></li>
+                                                    <li><a href="page-result-flight-list-02.html#">12</a></li>
+                                                    <li><a href="page-result-flight-list-02.html#">13</a></li>
                                                     <li>
-                                                        <a href="javascript:void(0)" aria-label="Next">
+                                                        <a href="page-result-flight-list-02.html#" aria-label="Next">
                                                             <span aria-hidden="true">&raquo;</span>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </nav>
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </section>
+
     </div>
 </th:block>
 </body>

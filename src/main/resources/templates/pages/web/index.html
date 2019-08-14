@@ -53,11 +53,11 @@
                                                 <div class="form-inner">
                                                     <div class="mb-10">
                                                         <div class="custom-control custom-radio  custom-control-inline">
-                                                            <input type="radio" id="flightSearchRadio-1" name="flightType" class="custom-control-input" checked>
+                                                            <input type="radio" id="flightSearchRadio-1" name="flightType" value="OneWay" class="custom-control-input" checked>
                                                             <label class="custom-control-label" for="flightSearchRadio-1">Return</label>
                                                         </div>
                                                         <div class="custom-control custom-radio  custom-control-inline">
-                                                            <input type="radio" id="flightSearchRadio-2" name="flightType" class="custom-control-input">
+                                                            <input type="radio" id="flightSearchRadio-2" name="flightType" value="Return" class="custom-control-input">
                                                             <label class="custom-control-label" for="flightSearchRadio-2">One-way</label>
                                                         </div>
                                                         <!--
@@ -75,7 +75,7 @@
 
                                                                     <select class="form-control" name="departureAirport">
                                                                         <option value=""></option>
-                                                                        <option value="1">EBB - Etebbe Airport Uganda</option>
+                                                                        <option th:each="airport : ${airports}" th:value="${airport.airportId}" th:text="${airport.airportCode} + ' - ' + ${airport.airportName} " ></option>
                                                                     </select>
                                                                    <!-- <input class="js-typeahead-country_v1 form-control" name="country_v1[query]" type="search" placeholder="Country or city" autocomplete="off">-->
                                                                </div>
@@ -89,7 +89,7 @@
 
                                                                     <select class="form-control" name="arrivalAirport">
                                                                         <option value=""></option>
-                                                                        <option value="2">CID - Cedar Rapids Iowa,USA</option>
+                                                                        <option th:each="airport : ${airports}" th:value="${airport.airportId}" th:text="${airport.airportCode} + ' - ' + ${airport.airportName} " ></option>
                                                                     </select>
                                                                   <!--  <input class="js-typeahead-country_v1 form-control" name="country_v1[query]" type="search" placeholder="Country or city" autocomplete="off">-->
 
@@ -131,11 +131,11 @@
                                                                 <div class="row gap-5">
                                                                     <div class="col-4">
                                                                         <div class="form-group form-spin-group">
-                                                                            <label>Adult <small class="text-muted font10 line-1">(12-75)</small></label>
+                                                                            <label>Passengers <small class="text-muted font10 line-1">(12-75)</small></label>
                                                                             <div class="form-icon-left">
                                                                                 <span class="icon-font text-muted"><i class="bx bx-user"></i></span>
 
-                                                                                <input name="noOfPassengers" type="number" class="form-control touch-spin-03 form-readonly-control" placeholder="0"  min="1" max="10"/>
+                                                                                <input name="noOfPassengers" type="number" class="form-control touch-spin-03 form-readonly-control" placeholder="1"  min="1" max="10"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>

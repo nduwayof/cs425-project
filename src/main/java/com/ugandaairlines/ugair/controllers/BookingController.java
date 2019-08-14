@@ -1,5 +1,6 @@
 package com.ugandaairlines.ugair.controllers;
 
+import com.ugandaairlines.ugair.airport.model.Airport;
 import com.ugandaairlines.ugair.airport.service.IAirportService;
 import com.ugandaairlines.ugair.booking.service.IBookingService;
 import com.ugandaairlines.ugair.flight.model.Flight;
@@ -41,18 +42,20 @@ public class BookingController {
 
    @GetMapping(path = {"/booking/flight/search"})
    public String bookingFlightSearchResults(@RequestParam Map<String , String> reqParams, Model model){
-        List<Flight> flights = (List<Flight>)flightService.flightBookingSearch(
-                airportService.findAirportById(new Integer(reqParams.get("departureAirport"))),
-                        airportService.findAirportById(new Integer(reqParams.get("arrivalAirport"))),
-                                LocalDateTime.of(LocalDate.parse(reqParams.get("departureDate")), LocalTime.now()),
-                                LocalDateTime.of(LocalDate.parse(reqParams.get("arrivalDate")), LocalTime.now())
+       Airport departureAirport = airportService.findAirportById(new Integer(reqParams.get("departureAirport")));
+       Airport arrivalAirport = airportService.findAirportById(new Integer(reqParams.get("arrivalAirport")));
+       LocalDateTime departureDate = LocalDateTime.of(LocalDate.parse(reqParams.get("departureDate")), LocalTime.now());
+       LocalDateTime arrivalDate =      LocalDateTime.of(LocalDate.parse(reqParams.get("arrivalDate")), LocalTime.now());
+       List<Flight> flights = (List<Flight>)flightService.flightBookingSearch(departureAirport,arrivalAirport,departureDate,arrivalDate);
 
-                );
 
         logger.log(Level.INFO, ">>>>>>> "+  flights.toString());
         model.addAttribute("flights",flights);
+        model.addAttribute("totalResults",flights.size());
+        model.addAttribute("destination",arrivalAirport);
 
         return "pages/web/search-flights";
+
     }
 
     @GetMapping(path = "/booking/flight/details")

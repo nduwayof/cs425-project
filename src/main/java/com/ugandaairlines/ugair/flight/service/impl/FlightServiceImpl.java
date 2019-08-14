@@ -41,6 +41,7 @@ public class FlightServiceImpl implements IFlightService {
 
 	@Override
 	public Iterable<Flight> flightBookingSearch(Airport depatureAirport, Airport arrivalAirport, LocalDateTime dapertureDate, LocalDateTime arrivalDate) {
+		//return flightRepository.findAll();
 		return flightRepository.flightBookingSearch(depatureAirport, arrivalAirport, dapertureDate, arrivalDate);
 	}
 
