@@ -52,6 +52,17 @@
                                 <td th:text="${flight.getBusinessCost()}"/>
                                 <td th:text="${flight.getAircraft().aircraftModel+' '+flight.getAircraft().registrationCode}"/>
                                 <!--Adding a button for update -->
+
+                                <td>
+                                    <button class="btn btn-warning btn-sm  glyphicon glyphicon-pencil "
+                                            th:onclick="'javascript:myUpdateFunction(\''+ ${flight.flightId} +'\');'">&nbsp;Update</button>
+
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger btn-sm  glyphicon glyphicon-remove"
+                                            th:onclick="'javascript:myDelFunction(\''+ ${flight.flightId} +'\');'">&nbsp;Delete</button>
+
+                                </td>
                             </tr>
                             </tbody>
                         </table>
