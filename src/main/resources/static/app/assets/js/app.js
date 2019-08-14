@@ -106,4 +106,7 @@ function ($) {
     "use strict";
     $.MainApp.init();
 }(window.jQuery);
+<<<<<<< HEAD
+=======
 
+>>>>>>> 9e578f1fcc2b468f37ab56db1cd6f94b9bb3781b

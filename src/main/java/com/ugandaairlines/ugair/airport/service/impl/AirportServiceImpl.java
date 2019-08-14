@@ -10,6 +10,7 @@ import com.ugandaairlines.ugair.airport.service.IAirportService;
 @Service
 public class AirportServiceImpl implements IAirportService {
 
+	@Autowired
 	private IAirportRepository airportRepository;
 
 	@Autowired

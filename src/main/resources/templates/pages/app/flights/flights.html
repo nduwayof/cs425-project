@@ -24,13 +24,13 @@
         <div class="col-lg-12">
             <div class="card m-b-30">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">List of Flights</h4>
+
                     <a href=""></a>
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <thead>
                             <tr>
-                                <th>#</th>
+                                <th>Flight Number</th>
                                 <th>From</th>
                                 <th>Destination</th>
                                 <th>Departure Time</th>
@@ -43,7 +43,7 @@
                             <tbody>
                             <tr th:each="flight,istat:${flights}">
 
-                                <td th:text="${istat.count}"/>
+                                <td th:text="${flight.flightNumber}"/>
                                 <td th:text="${flight.getDepartureAirport().airportName+' '+flight.getDepartureAirport().city+','+flight.getDepartureAirport().country}"/>
                                 <td th:text="${flight.getArrivalAirport().airportName+' '+flight.getArrivalAirport().city+','+flight.getArrivalAirport().country}"/>
                                 <td th:text="${flight.getDepartureTime()}"/>
