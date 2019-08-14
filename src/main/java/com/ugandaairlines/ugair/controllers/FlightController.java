@@ -1,5 +1,6 @@
 package com.ugandaairlines.ugair.controllers;
 
+import com.ugandaairlines.ugair.airport.model.Aircraft;
 import com.ugandaairlines.ugair.airport.model.Airport;
 import com.ugandaairlines.ugair.airport.service.IAircraftService;
 import com.ugandaairlines.ugair.airport.service.IAirportService;
@@ -8,10 +9,10 @@ import com.ugandaairlines.ugair.flight.service.IFlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDateTime;
 
 
 @Controller
@@ -35,24 +36,32 @@ public class FlightController {
     public String addNewFlight(Model model) {
         model.addAttribute("flight", new Flight());
         Iterable<Airport> airports = airportService.findAllAirport();
+        Iterable<Aircraft> aircrafts = aircraftService.findAllAircrafts();
         model.addAttribute("airports", airports);
+        model.addAttribute("aircrafts", aircrafts);
         return "pages/app/flights/new-flight";
     }
 
-    @GetMapping(path = "/app/flights/save")
-    private String saveFlight(@ModelAttribute Flight flight) {
+    @PostMapping("/app/flights/save")
+    private String saveFlight(@ModelAttribute Flight flight,Model model) {
+        String dt = flight.getDepartureHour();
+        String at = flight.getArrivalHour();
+        int minute  =Integer.parseInt(dt.substring(14,16));
+        int hour  =Integer.parseInt(dt.substring(11,13));
+        int day  =Integer.parseInt(dt.substring(8,10));
+        int month  =Integer.parseInt(dt.substring(5,7));
+        int year  =Integer.parseInt(dt.substring(0,4));
+        flight.setDepartureTime(LocalDateTime.of(year,month,day,hour,minute));
+
+        minute  =Integer.parseInt(at.substring(14,16));
+        hour  =Integer.parseInt(at.substring(11,13));
+        day  =Integer.parseInt(at.substring(8,10));
+        month  =Integer.parseInt(at.substring(5,7));
+        year  =Integer.parseInt(at.substring(0,4));
+        flight.setArrivalTime(LocalDateTime.of(year,month,day,hour,minute));
+
         flightService.saveFlight(flight);
-        return null;
-//        @OneToOne
-//        private Airport departureAirport;
-//        @OneToOne
-//        private Airport arrivalAirport;
-//        @OneToOne
-//        private Aircraft aircraft;
-//        @OneToMany(mappedBy = "flight")
-//        List<FlightCost> flightCosts;
-//        @OneToMany(mappedBy = "flight")
-//        List<Booking> bookings;
+        return "redirect:/app/flights";
     }
 
     @GetMapping(path = "/app/flights")
