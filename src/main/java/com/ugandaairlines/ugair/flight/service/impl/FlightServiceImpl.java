@@ -29,27 +29,26 @@ public class FlightServiceImpl implements IFlightService {
 
 		return flightRepository.findAll();
 	}
-
+	@Override
+	public Page<Flight> findAllFlights(int pageNo) {
+		return flightRepository.findAll(PageRequest.of(pageNo,5,Sort.by("arrivalTime")));
+	}
 	@Override
 	public Flight findFlightById(Integer flightId) {
 
 		return flightRepository.findById(flightId).orElse(null);
 	}
-
 	@Override
 	public void deleteFlight(Flight flight) {
 		flightRepository.delete(flight);
-		
-	}
-
+			}
 	@Override
 	public Iterable<Flight> flightBookingSearch(Airport depatureAirport, Airport arrivalAirport, LocalDateTime dapertureDate, LocalDateTime arrivalDate) {
 		return flightRepository.flightBookingSearch(depatureAirport, arrivalAirport, dapertureDate, arrivalDate);
 	}
-
 	@Override
 	public Page<Flight> search(String search, int pageno) {
-		return flightRepository.findFlightsByFlightNumberContainingOrArrivalAirportCityContainingOrDepartureAirportCityOrDepartureAirportAirportNameContainingOrArrivalAirportAirportNameContainingOrDepartureAirportCountryContainingOrArrivalAirportCountryContainingOrAircraftAircraftModelContainingOrAircraftRegistrationCodeContaining(search, search,search,search,search,search,search,search,search,PageRequest.of(pageno,10, Sort.by("flightNumber")));
+		return flightRepository.findFlightsByFlightNumberContainingOrArrivalAirportCityContainingOrDepartureAirportCityOrDepartureAirportAirportNameContainingOrArrivalAirportAirportNameContainingOrDepartureAirportCountryContainingOrArrivalAirportCountryContainingOrAircraftAircraftModelContainingOrAircraftRegistrationCodeContaining(search, search,search,search,search,search,search,search,search,PageRequest.of(pageno,5, Sort.by("flightNumber")));
 	}
 
 }
