@@ -60,9 +60,27 @@ public class FlightController {
         year  =Integer.parseInt(at.substring(0,4));
         flight.setArrivalTime(LocalDateTime.of(year,month,day,hour,minute));
 
-
-
         flightService.saveFlight(flight);
+        return "redirect:/app/flights";
+    }
+
+    @RequestMapping("/app/flights/update")
+    public String updateFlight(@RequestParam("flightId") Integer flightId,Model model){
+        Flight flight =flightService.findFlightById(flightId);
+        flight.setDepartureHour(flight.getDepartureTime().toString());
+        flight.setArrivalHour(flight.getArrivalTime().toString());
+        model.addAttribute("flight",flight);
+        Iterable<Airport> airports = airportService.findAllAirport();
+        Iterable<Aircraft> aircrafts = aircraftService.findAllAircrafts();
+        model.addAttribute("airports", airports);
+        model.addAttribute("aircrafts", aircrafts);
+
+        return "pages/app/flights/new-flight";
+    }
+
+    @RequestMapping("/app/flights/delete")
+    public String deleteCustomer(@RequestParam("flightId") Integer flightId){
+        flightService.deleteFlight(flightService.findFlightById(flightId));
         return "redirect:/app/flights";
     }
 
