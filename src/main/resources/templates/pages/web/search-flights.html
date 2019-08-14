@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/web/main-page}">
 <head>
-    <title>Uganda Airlines || Home</title>
+    <title>Uganda Airlines || Search results</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -230,7 +230,7 @@
                                                             </p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">
+                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
                                                                 <em class="fa fa-search"></em>
                                                                 Details
                                                             </a>
@@ -298,7 +298,10 @@
                                                             </p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">Details</a>
+                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
+                                                                <em class="fa fa-search"></em>
+                                                                Details
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -363,7 +366,10 @@
                                                             </p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">Details</a>
+                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
+                                                                <em class="fa fa-search"></em>
+                                                                Details
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -428,7 +434,10 @@
                                                             </p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">Details</a>
+                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
+                                                                <em class="fa fa-search"></em>
+                                                                Details
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -491,7 +500,10 @@
                                                             <p><i class="far fa-clock mt-10"></i> Offer end: <strong>11/05/2019</strong></p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">Details</a>
+                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
+                                                                <em class="fa fa-search"></em>
+                                                                Details
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -511,7 +523,7 @@
                                         <div class="col-12 col-shrink">
 
                                             <div class="image height-auto">
-                                                <img th:src="@{/web/images/img-placeholder.jpg}" alt="images" />
+                                                <img th:src="@{/web/images/img-placeholder.jpg}" alt="images"  src=""/>
                                             </div>
 
                                         </div>
@@ -551,10 +563,13 @@
                                                 <div class="content-bottom mt-auto">
                                                     <div class="d-flex align-items-center">
                                                         <div>
-                                                            <p><i class="far fa-clock mt-10"></i> Offer end: <strong>11/05/2019</strong></p>
+                                                            <p><em class="far fa-clock mt-10"></em> Offer end: <strong>11/05/2019</strong></p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">Details</a>
+                                                            <a href="/booking/flight/details" class="btn btn-primary btn-sm btn-wide">
+                                                                <em class="fa fa-search"></em>
+                                                                Details
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -583,42 +598,33 @@
                                             <nav class="float-lg-right mt-10 mt-md-0">
                                                 <ul class="pagination justify-content-center justify-content-lg-left">
                                                     <li>
-                                                        <a href="page-result-flight-list-02.html#" aria-label="Previous">
+                                                        <a href="javascript:void(0)" aria-label="Previous">
                                                             <span aria-hidden="true">&laquo;</span>
                                                         </a>
                                                     </li>
-                                                    <li class="active"><a href="page-result-flight-list-02.html#">1</a></li>
-                                                    <li><a href="page-result-flight-list-02.html#">2</a></li>
-                                                    <li><a href="page-result-flight-list-02.html#">3</a></li>
+                                                    <li class="active"><a href="javascript:void(0)">1</a></li>
+                                                    <li><a href="javascript:void(0)">2</a></li>
+                                                    <li><a href="javascript:void(0)">3</a></li>
                                                     <li><span>...</span></li>
-                                                    <li><a href="page-result-flight-list-02.html#">11</a></li>
-                                                    <li><a href="page-result-flight-list-02.html#">12</a></li>
-                                                    <li><a href="page-result-flight-list-02.html#">13</a></li>
+                                                    <li><a href="javascript:void(0)">11</a></li>
+                                                    <li><a href="javascript:void(0)">12</a></li>
+                                                    <li><a href="javascript:void(0)">13</a></li>
                                                     <li>
-                                                        <a href="page-result-flight-list-02.html#" aria-label="Next">
+                                                        <a href="javascript:void(0)" aria-label="Next">
                                                             <span aria-hidden="true">&raquo;</span>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </nav>
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
     </div>
 </th:block>
 </body>

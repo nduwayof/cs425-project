@@ -24,14 +24,20 @@ import java.util.logging.Logger;
 @Controller
 public class BookingController {
 
-    Logger logger = Logger.getLogger(BookingController.class.getName() );
+    private Logger logger = Logger.getLogger(BookingController.class.getName() );
+
+    private IBookingService bookingService;
+
+    private IFlightService flightService;
+
+    private IAirportService airportService;
 
     @Autowired
-    private IBookingService bookingService;
-    @Autowired
-    private IFlightService flightService;
-    @Autowired
-    private IAirportService airportService;
+    public BookingController(IBookingService bookingService, IFlightService flightService, IAirportService airportService){
+        this.bookingService = bookingService;
+        this.flightService = flightService;
+        this.airportService = airportService;
+    }
 
    @GetMapping(path = {"/booking/flight/search"})
    public String bookingFlightSearchResults(@RequestParam Map<String , String> reqParams, Model model){
@@ -43,9 +49,16 @@ public class BookingController {
 
                 );
 
-        logger.log(Level.SEVERE,"cvbb"+ flights.toString());
+        logger.log(Level.INFO, ">>>>>>> "+  flights.toString());
         model.addAttribute("flights",flights);
 
         return "pages/web/search-flights";
     }
+
+    @GetMapping(path = "/booking/flight/details")
+    public String bookingFlightDetails(){
+        return "pages/web/booking-details";
+    }
+
+
 }

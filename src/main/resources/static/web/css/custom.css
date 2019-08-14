@@ -100,3 +100,7 @@
     padding-top: 30px!important;
     padding-bottom: 45px!important;
 }
+.btn-primary:hover{
+    background: #000;
+    color: #FFF;
+}
