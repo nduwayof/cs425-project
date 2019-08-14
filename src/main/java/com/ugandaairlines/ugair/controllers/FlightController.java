@@ -60,7 +60,11 @@ public class FlightController {
         year  =Integer.parseInt(at.substring(0,4));
         flight.setArrivalTime(LocalDateTime.of(year,month,day,hour,minute));
 
-        flightService.saveFlight(flight);
+        Flight f = flightService.saveFlight(flight);
+        int id = f.getFlightId();
+        String flightNo = "UG" +String.format("%04d" , id);
+        f.setFlightNumber(flightNo);
+        flightService.saveFlight(f);
         return "redirect:/app/flights";
     }
 
