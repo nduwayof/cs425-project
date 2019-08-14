@@ -28,7 +28,7 @@ public class User {
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "USER_ACTIVE", nullable = false)
+    @Column(name = "USER_TYPE", nullable = false)
     private EUserType userType;
 
     @Column(name = "ACTIVE", nullable = false)

@@ -3230,9 +3230,8 @@ table.focus-on tbody tr.focused td {
 }
 
 .accountbg {
-  background: url("../images/restaurant.png");
+  background: #000000;
   position: absolute;
-  background-position: center center;
   height: 100%;
   width: 100%;
   top: 0;
