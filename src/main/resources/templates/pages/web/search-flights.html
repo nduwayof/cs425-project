@@ -209,7 +209,7 @@
                                                         <div class="ml-auto">
                                                             <div class="price">
                                                                 start from
-                                                                <span class="text-secondary">$895</span>
+                                                                <span class="text-secondary" th:text="'$'+${flight.economyCost}"></span>
                                                                 per person
                                                             </div>
                                                         </div>
@@ -219,7 +219,7 @@
                                                 </div>
 
                                                 <div class="content">
-                                                    <p th:text=" 'Flight No.:   ' + ' , Aircraft : ' + ${flight.aircraft.aircraftModel} + ' , Seats remaining : ' + ${flight.aircraft.economyCapacity} "></p>
+                                                    <p th:text=" 'Flight No.:   ' +  ${flight.flightNumber} + ' , Aircraft : ' + ${flight.aircraft.aircraftModel} + ' , Seats remaining : ' + ${flight.aircraft.economyCapacity} "></p>
                                                 </div>
 
                                                 <div class="content-bottom mt-auto">
@@ -230,7 +230,7 @@
                                                             </p>
                                                         </div>
                                                         <div class="ml-auto">
-                                                            <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-wide">
+                                                            <a th:href="@{'/booking/flight/details?rf=' +${flight.flightId} }" class="btn btn-primary btn-sm btn-wide">
                                                                 <em class="fa fa-search"></em>
                                                                 Book Flight
                                                             </a>

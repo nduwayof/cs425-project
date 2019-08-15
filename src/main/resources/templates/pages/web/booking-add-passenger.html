@@ -36,162 +36,154 @@
                         <div class="content-wrapper">
                             <div id="detail-content-sticky-nav-02" class="fullwidth-horizon-sticky-section">
 
-                                <h3 class="heading-title"><span>Please provide your details</span></h3>
+                                <h3 class="heading-title"><span>Add Passenger Details</span></h3>
 
                                 <div class="change-search-wrapper">
 
-                                    <form action="/booking/flight/details/customer/new" method="get" th:object="${customer}">
+                                    <form action="/booking/flight/details/passenger/add" method="get" th:object="${passenger}">
 
-                                        <input type="hidden" name="rf" th:value="${flight.flightId}">
+                                        <input type="hidden" name="flight" th:value="${flight.flightId}">
+                                        <input type="hidden" name="booking" th:value="${booking.bookingId}">
+
 
                                         <div class="row gap-10 gap-xl-20 align-items-end">
 
-                                        <div class="col-12 col-lg-12">
+                                            <div class="col-12 col-lg-12">
 
-                                            <div id="airDatepickerRange-general" class="row gap-10 gap-xl-20">
+                                                <div id="airDatepickerRange-general" class="row gap-10 gap-xl-20">
 
-                                                <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+                                                    <div class="col-4 col-sm-4 col-sm-4 col-md-4">
 
-                                                    <div class="form-group">
-                                                        <label>First Name *</label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input type="text" name="firstName" id="firstName" class="form-control " th:value="${customer.firstName}" >
+                                                        <div class="form-group">
+                                                            <label>First Name *</label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
+                                                                <input type="text" name="firstName" id="firstName" class="form-control " th:value="${customer.firstName}" >
+                                                            </div>
                                                         </div>
+
+                                                    </div>
+
+                                                    <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+
+                                                        <div class="form-group">
+                                                            <label>Middle Name </label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
+                                                                <input type="text" name="middleName" id="middleName" class="form-control" th:value="${customer.middleName}" >
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+
+                                                        <div class="form-group">
+                                                            <label>Last Name *</label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
+                                                                <input type="text" name="lastName" id="lastName" class="form-control" th:value="${customer.lastName}" >
+                                                            </div>
+                                                        </div>
+
                                                     </div>
 
                                                 </div>
 
-                                                <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+                                            </div>
+                                            <div class="col-12 col-lg-12">
 
-                                                    <div class="form-group">
-                                                        <label>Middle Name </label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input type="text" name="middleName" id="middleName" class="form-control" th:value="${customer.middleName}" >
+                                                <div id="airDatepickerRange-general" class="row gap-10 gap-xl-20">
+
+                                                    <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+
+                                                        <div class="form-group">
+                                                            <label>Email Address *</label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
+                                                                <input  type="email" name="email" id="email" class="form-control " th:value="${customer.email}" >
+                                                            </div>
                                                         </div>
+
                                                     </div>
 
-                                                </div>
+                                                    <div class="col-4 col-sm-4 col-sm-4 col-md-4">
 
-                                                <div class="col-4 col-sm-4 col-sm-4 col-md-4">
-
-                                                    <div class="form-group">
-                                                        <label>Last Name *</label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input type="text" name="lastName" id="lastName" class="form-control" th:value="${customer.lastName}" >
+                                                        <div class="form-group">
+                                                            <label>Phone Number * </label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
+                                                                <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" th:value="${customer.phoneNumber}" >
+                                                            </div>
                                                         </div>
+
+                                                    </div>
+
+                                                    <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+
+                                                        <div class="form-group">
+                                                            <label>Gender*</label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
+                                                                <select name="gender" id="gender" class="form-control" required >
+                                                                    <option th:value="${customer.gender}" th:text="${customer.gender}"></option>
+                                                                    <option value="MALE">Male</option>
+                                                                    <option VALUE="FEMALE">Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
 
                                                 </div>
 
                                             </div>
 
-                                        </div>
-                                        <div class="col-12 col-lg-12">
+                                            <div class="col-12 col-sm-8 col-md-8 col-xl-9">
 
-                                            <div id="airDatepickerRange-general" class="row gap-10 gap-xl-20">
+                                                <div class="row gap-10 gap-xl-20">
 
-                                                <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+                                                    <div class="col-8 col-sm-8">
 
-                                                    <div class="form-group">
-                                                        <label>Email Address *</label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input  type="email" name="email" id="email" class="form-control " th:value="${customer.email}" >
+                                                        <div class="form-group form-spin-group">
+                                                            <label for="destinationAddress">Destination Address *</label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
+                                                                <input type="text" id="destinationAddress" name="destinationAddress" class="form-control" required  />
+                                                            </div>
                                                         </div>
+
                                                     </div>
 
-                                                </div>
 
-                                                <div class="col-4 col-sm-4 col-sm-4 col-md-4">
+                                                    <div class="col-4 col-sm-4">
 
-                                                    <div class="form-group">
-                                                        <label>Phone Number * </label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" th:value="${customer.phoneNumber}" >
+                                                        <div class="form-group form-spin-group">
+                                                            <label for="passengerClass">Class *</label>
+                                                            <div class="form-icon-left">
+                                                                <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
+                                                                <select id="passengerClass" name="passengerClass"  class="form-control" required >
+                                                                    <option>Select Class</option></option>
+                                                                    <option>Economy</option>
+                                                                    <option>Business</option>
+                                                                </select>
+
+                                                            </div>
                                                         </div>
+
                                                     </div>
-
-                                                </div>
-
-                                                <div class="col-4 col-sm-4 col-sm-4 col-md-4">
-
-                                                    <div class="form-group">
-                                                        <label>Gender*</label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <select name="gender" id="gender" class="form-control" >
-                                                                <option value="">Choose Gender</option>
-                                                                <option value="MALE">Male</option>
-                                                                <option VALUE="FEMALE">Female</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
                                                 </div>
 
                                             </div>
 
-                                        </div>
+                                            <div class="col-12 col-sm-4 col-md-4 col-xl-3">
+                                                <div class="form-group">
 
-                                        <div class="col-12 col-sm-8 col-md-8 col-xl-9">
-
-                                            <div class="row gap-10 gap-xl-20">
-
-                                                <div class="col-4 col-sm-4">
-
-                                                    <div class="form-group form-spin-group">
-                                                        <label for="adults">No. of Passengers : Adults *</label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
-                                                            <input type="number" id="adults" class="form-control" value="1" min="1" />
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-4 col-sm-4 col-md-4">
-
-                                                    <div class="form-group form-spin-group">
-                                                        <label for="kids">Kids ( Less 5 years) *</label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
-                                                            <input type="number" id="kids" class="form-control" value="0" min="0"  />
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-4 col-sm-4">
-
-                                                    <div class="form-group form-spin-group">
-                                                        <label for="addMeAsPassenger">Add me as a passenger</label>
-                                                        <div class="form-icon-left">
-                                                            <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
-                                                            <select id="addMeAsPassenger" name="addMeAsPassenger"  class="form-control" >
-                                                                <option>Yes</option>
-                                                                <option>No</option>
-                                                            </select>
-
-                                                        </div>
-                                                    </div>
-
+                                                    <button type="submit" class="btn  btn-primary ">Save &amp; New</button>
                                                 </div>
                                             </div>
 
                                         </div>
-
-                                        <div class="col-12 col-sm-4 col-md-4 col-xl-3">
-                                            <div class="form-group">
-
-                                                <button type="submit" class="btn  btn-primary ">Add Passenger Details</button>
-                                            </div>
-                                        </div>
-
-                                    </div>
                                     </form>
 
 
@@ -355,57 +347,30 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                    </div>
+
+                                    <div class="hotel-room-sm-item" th:each="psg : ${passengers}">
+
                                         <div class="the-room-item">
-                                            <h6>Deluxe Room</h6>
+                                            <h6 th:text="${psg.firstName} + ' ' + ${psg.lastName}"></h6>
                                             <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
-                                            </div>
-                                            <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
-                                        </div>
-                                        <div class="the-room-item">
-                                            <h6>Deluxe Room (Executive)</h6>
-                                            <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
-                                            </div>
-                                            <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
-                                        </div>
-                                        <div class="the-room-item">
-                                            <h6>Executive Deluxe Marina Bay View</h6>
-                                            <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
+                                                <span class="amount" th:text="${psg.passengerClass}"></span>
+                                                <span class="price" th:text="'$'+ ${psg.flight.economyCost}"></span>
                                             </div>
                                             <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
                                         </div>
                                     </div>
 
                                     <div class="hotel-room-sm-item">
-                                        <div class="the-hotel-item">
-                                            <h5><A href="page-detail.html#">Marina Bay Sands Hotel</a></h5>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <p class="location">Marina Bay, Singapore</p>
-                                                </div>
-                                                <div>
-                                                    <div class="rating-item rating-xs">
-                                                        <div class="rating-icons">
-                                                            <input type="hidden" class="rating" data-filled="rating-icon fas fa-star rating-rated" data-empty="rating-icon far fa-star" data-fractions="2" data-readonly value="4.5"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="the-room-item">
-                                            <h6>Deluxe Room (Executive)</h6>
-                                            <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
-                                            </div>
-                                            <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
+                                            <h5 th:text="${totalCost}"></h5>
+
+
                                         </div>
                                     </div>
+
 
 
                                     <a href="page-detail.html#" class="btn btn-secondary btn-block mt-20">Check out</a>

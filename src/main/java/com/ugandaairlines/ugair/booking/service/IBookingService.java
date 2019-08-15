@@ -6,10 +6,13 @@ import org.springframework.data.domain.Pageable;
 
 public interface IBookingService {
 	
-	 Booking saveBooking(Booking booking);
-	 Iterable<Booking> findAllBookings();
-	 Page<Booking> findAllBookings(int pageNo);
-	 Booking findBookingById(Integer bookingId);
-	 void deleteBooking(Booking booking);
+
+    Booking saveBooking(Booking booking);
+    Iterable<Booking> findAllBookings();
+    Page<Booking> findAllBookings(int pageNo);
+    Booking findBookingById(Integer bookingId);
+    void deleteBooking(Booking booking);
+	double calculateTotalCost(Booking booking);
+
 
 }

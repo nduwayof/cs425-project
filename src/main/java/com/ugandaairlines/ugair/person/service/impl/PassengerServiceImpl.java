@@ -1,5 +1,6 @@
 package com.ugandaairlines.ugair.person.service.impl;
 
+import com.ugandaairlines.ugair.booking.model.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,11 @@ public class PassengerServiceImpl implements IPassengerService {
 	public void deletePassenger(Passenger passenger) {
 		passengerRepository.delete(passenger);
 		
+	}
+
+	@Override
+	public Iterable<Passenger> findPassegersByBooking(Booking booking) {
+		return passengerRepository.findAllByBookingEquals(booking);
 	}
 
 }

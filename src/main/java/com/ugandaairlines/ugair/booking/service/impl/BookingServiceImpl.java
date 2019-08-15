@@ -1,5 +1,6 @@
 package com.ugandaairlines.ugair.booking.service.impl;
 
+import com.ugandaairlines.ugair.person.model.Passenger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,6 +43,19 @@ public class BookingServiceImpl implements IBookingService {
 	public void deleteBooking(Booking booking) {
 		bookingRepository.delete(booking);
 		
+	}
+
+	@Override
+	public double calculateTotalCost(Booking booking) {
+		double sum = 0;
+		for(Passenger passenger : booking.getPassengers())
+			if(passenger.getPassengerClass().equals("Economy")){
+				sum += passenger.getFlight().getEconomyCost();
+			}
+		else{
+			sum += passenger.getFlight().getBusinessCost();
+			}
+		return sum;
 	}
 
 }
