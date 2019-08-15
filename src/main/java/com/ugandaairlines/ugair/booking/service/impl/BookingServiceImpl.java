@@ -1,6 +1,9 @@
 package com.ugandaairlines.ugair.booking.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.ugandaairlines.ugair.booking.model.Booking;
@@ -22,6 +25,11 @@ public class BookingServiceImpl implements IBookingService {
 	public Iterable<Booking> findAllBookings() {
 
 		return bookingRepository.findAll();
+	}
+
+	@Override
+	public Page<Booking> findAllBookings(int pageNo) {
+		return bookingRepository.findAll(PageRequest.of(pageNo,10, Sort.by("bookingId")));
 	}
 
 	@Override
