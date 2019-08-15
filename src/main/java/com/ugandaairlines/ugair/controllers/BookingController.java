@@ -100,6 +100,7 @@ public class BookingController {
         booking.setBookingStatus(EBookingStatus.PENDING);
         booking.setCustomer(customer);
         Booking booking2 = bookingService.saveBooking(booking);
+
         model.addAttribute("booking", booking);
         model.addAttribute("passenger",new Passenger());
         model.addAttribute("flight",flight);
@@ -119,7 +120,8 @@ public class BookingController {
         String addMeAsPassenger = reqParam.get("addMeAsPassenger");
         Flight flight = flightService.findFlightById(flightId);
         Booking booking = bookingService.findBookingById(bookingId);
-        logger.log(Level.INFO, ">>>>>>> cvbb"+ booking);
+        List<Passenger> passengers = (List<Passenger>)passengerService.findPassegersByBooking(booking);
+        logger.log(Level.INFO, ">>>>>>> "+ passengers);
         model.addAttribute("flight",flight);
         model.addAttribute("passenger",new Passenger());
         model.addAttribute("booking",booking);
@@ -127,7 +129,7 @@ public class BookingController {
             customer = booking.getCustomer();
         }
         model.addAttribute("customer",customer);
-        model.addAttribute("passengers", booking.getPassengers());
+        model.addAttribute("passengers", passengers);
         model.addAttribute("totalCost",bookingService.calculateTotalCost(booking));
 
         return "pages/web/booking-add-passenger";
