@@ -16,13 +16,18 @@ public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer passengerId;
+	@NotBlank(messange = "First Name required")
     private String firstName;
     private String middleName;
+	@NotBlank(messange = "Last First Name required")
     private String lastName;
+	@NotNull
     private EGender gender;
     private String phoneNumber;
     private String email;
     private String passengerClass;
+	
+	@NotBlank(messange = "Destination Address recquired")
     private String destinationAddress;
 
     @OneToOne

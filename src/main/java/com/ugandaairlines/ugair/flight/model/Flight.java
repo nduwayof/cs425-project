@@ -34,14 +34,15 @@ public class Flight {
 
 	@NotNull(message = "Departure Airport Required")
     @OneToOne
-
+	
+	@NotNull
     private Airport departureAirport;
 	
 	@NotNull(message = "Arrival Airport Required")
     @OneToOne
-
     private Airport arrivalAirport;
-
+	
+	@NotNull
     @OneToOne
     private Aircraft aircraft;
 
