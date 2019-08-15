@@ -128,8 +128,8 @@ public class FlightController {
     @GetMapping(path = "/app/bookings")
     public ModelAndView bookingList(@RequestParam(defaultValue = "0") int pageno) {
         ModelAndView modelAndView = new ModelAndView();
-        Iterable<Booking> bookings = iBookingService.findAllBookings();
-        //long numberOfFlights = bookings.getTotalElements();
+        Page<Booking> bookings = iBookingService.findAllBookings(pageno);
+        long numberOfFlights = bookings.getTotalElements();
         modelAndView.addObject("currPageNo", pageno);
         modelAndView.addObject("bookings", bookings);
         modelAndView.addObject("flashBack", "/app/bookings");
