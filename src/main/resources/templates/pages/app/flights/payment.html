@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/app/admin-main-page}">
+<head>
+    <title>Uganda Airlines || Bookings</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="page-title-box">
+        <div class="row align-items-center">
+            <div class="col-sm-4">
+                <h4 class="page-title">List of Bookings</h4>
+            </div>
+            <div class="col-sm-3" >
+                <form action="#" th:action="@{/bookings/search}"  method="get"
+                      class="form-inline ml-auto">
+                    <div class="md-form my-0">
+                        <input class="form-control" type="text" name="search" required placeholder="Flight Number only"
+                               aria-label="Search">
+                        <button class="btn btn-outline-white btn-md my-0 ml-sm-2"
+                                type="submit">Search</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-sm-2" style="text-align: center;">
+                <a href="/app/flight/new"  > <button class="btn btn-info btn-md  glyphicon glyphicon-pencil "
+                >&nbsp;Add Flight</button></a>
+
+            </div>
+            <div class="col-sm-2" >
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/app/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="/app/bookings">Bookings</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+
+                    <a href=""></a>
+                    <div class="table-responsive">
+
+
+
+
+
+                    </div>
+    </span>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myUpdateFunction(s) {
+            if (confirm("Alert!!!!!!\nAre you sure you want to modify flight information?")) {
+
+                window.location.href = '/app/flights/update?flightId='.concat(s);
+
+            }
+
+        }
+        function myDelFunction(s) {
+            if (confirm("Alert!!!!!!\nAre you sure you want to delete the flight".concat(s).concat("?"))) {
+
+                window.location.href = '/app/flights/delete?flightId='.concat(s);
+                window.alert('Successfully Deleted');
+            }
+
+
+        }
+    </script>
+</th:block>
+</body>
+</html>
