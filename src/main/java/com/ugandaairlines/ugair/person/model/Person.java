@@ -1,8 +1,11 @@
 package com.ugandaairlines.ugair.person.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @MappedSuperclass
+@Data
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

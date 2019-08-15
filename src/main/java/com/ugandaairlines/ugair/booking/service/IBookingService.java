@@ -8,5 +8,6 @@ public interface IBookingService {
 	public abstract Iterable<Booking> findAllBookings();
 	public abstract Booking findBookingById(Integer bookingId);
 	public abstract void deleteBooking(Booking booking);
+	public double calculateTotalCost(Booking booking);
 
 }
