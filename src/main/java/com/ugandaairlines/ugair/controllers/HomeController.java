@@ -25,6 +25,9 @@ public class HomeController {
 
     @GetMapping(path = "/")
     public String home(Model model) {
+		 
+		model.addAttribute("airports", airportService.findAllAirport());
+		 
         try {
             Passenger passenger = new Passenger() ;
             passenger.setFirstName("Fabrice");
@@ -33,7 +36,7 @@ public class HomeController {
                     "nduwayof@gmail.com",
                     "Uganda Airlines",
                     new MailMessageTemplate().BookingConfirmation(passenger));
-            model.addAttribute("airports", airportService.findAllAirport());
+           
         }catch (Exception ex){
 
         }

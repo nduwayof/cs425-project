@@ -22,7 +22,7 @@ public class Booking {
     private Double bookingCost;
     private EBookingStatus bookingStatus;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @Transient
     private List<Passenger> passengers;
 
     public Booking() {
