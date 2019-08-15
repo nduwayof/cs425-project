@@ -26,13 +26,13 @@ public class HomeController {
     @GetMapping(path = "/")
     public String home(Model model) {
         try {
-            Passenger passenger = new Passenger() ;
+            /*Passenger passenger = new Passenger() ;
             passenger.setFirstName("Fabrice");
             passenger.setLastName("Nduwayo");
             mailService.sendMailUsingTemplate("fnduwayo@mum.edu",
                     "nduwayof@gmail.com",
                     "Uganda Airlines",
-                    new MailMessageTemplate().BookingConfirmation(passenger));
+                    new MailMessageTemplate().BookingConfirmation(passenger));*/
             model.addAttribute("airports", airportService.findAllAirport());
         }catch (Exception ex){
 
