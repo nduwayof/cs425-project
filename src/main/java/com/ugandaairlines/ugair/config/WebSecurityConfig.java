@@ -1,6 +1,5 @@
 package com.ugandaairlines.ugair.config;
 
-import com.ugandaairlines.ugair.security.domain.EUserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -53,7 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/web/**").permitAll()
                 .antMatchers("/app/assets/**").permitAll()
                 .antMatchers("/").permitAll()
+                .antMatchers("/about").permitAll()
+                .antMatchers("/customer/**").permitAll()
                 .antMatchers("/booking/**").permitAll()
+                .antMatchers("/api/flights").permitAll()
                 .antMatchers("/administrator/login").permitAll()
                 .antMatchers("/app/**").access("hasRole('ROLE_ADMINISTRATOR') or hasRole('ROLE_MANAGER')")
                 .anyRequest().authenticated()
