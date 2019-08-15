@@ -56,7 +56,7 @@
                                                         <label>First Name *</label>
                                                         <div class="form-icon-left">
                                                             <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input type="text" name="firstName" id="firstName" class="form-control " th:value="${customer.firstName}" >
+                                                            <input type="text" name="firstName" id="firstName" class="form-control " th:value="${customer.firstName}" required >
                                                         </div>
                                                     </div>
 
@@ -80,7 +80,7 @@
                                                         <label>Last Name *</label>
                                                         <div class="form-icon-left">
                                                             <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input type="text" name="lastName" id="lastName" class="form-control" th:value="${customer.lastName}" >
+                                                            <input type="text" name="lastName" id="lastName" class="form-control" th:value="${customer.lastName}" required >
                                                         </div>
                                                     </div>
 
@@ -99,7 +99,7 @@
                                                         <label>Email Address *</label>
                                                         <div class="form-icon-left">
                                                             <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input  type="email" name="email" id="email" class="form-control " th:value="${customer.email}" >
+                                                            <input  type="email" name="email" id="email" class="form-control " th:value="${customer.email}" required >
                                                         </div>
                                                     </div>
 
@@ -111,7 +111,7 @@
                                                         <label>Phone Number * </label>
                                                         <div class="form-icon-left">
                                                             <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" th:value="${customer.phoneNumber}" >
+                                                            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" th:value="${customer.phoneNumber}" required >
                                                         </div>
                                                     </div>
 
@@ -123,7 +123,7 @@
                                                         <label>Gender*</label>
                                                         <div class="form-icon-left">
                                                             <span class="icon-font text-muted"><i class="bx bx-calendar"></i></span>
-                                                            <select name="gender" id="gender" class="form-control" >
+                                                            <select name="gender" id="gender" class="form-control" required >
                                                                 <option value="">Choose Gender</option>
                                                                 <option value="MALE">Male</option>
                                                                 <option VALUE="FEMALE">Female</option>
@@ -147,7 +147,7 @@
                                                         <label for="adults">No. of Passengers : Adults *</label>
                                                         <div class="form-icon-left">
                                                             <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
-                                                            <input type="number" id="adults" class="form-control" value="1" min="1" />
+                                                            <input type="number" id="adults" class="form-control" value="1" min="1" required />
                                                         </div>
                                                     </div>
 
@@ -286,7 +286,7 @@
                                                             <label class="line12 font13 spacing-05 mt-5 mb-10 block">Passengers</label>
                                                             <div class="form-icon-left">
                                                                 <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
-                                                                <input type="text" class="form-control touch-spin-03 form-readonly-control" value="1" readonly />
+                                                                <input type="text" class="form-control touch-spin-03 form-readonly-control" value="0" readonly />
                                                             </div>
                                                         </div>
 
@@ -354,61 +354,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="the-room-item">
-                                            <h6>Deluxe Room</h6>
-                                            <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
-                                            </div>
-                                            <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
-                                        </div>
-                                        <div class="the-room-item">
-                                            <h6>Deluxe Room (Executive)</h6>
-                                            <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
-                                            </div>
-                                            <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
-                                        </div>
-                                        <div class="the-room-item">
-                                            <h6>Executive Deluxe Marina Bay View</h6>
-                                            <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
-                                            </div>
-                                            <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
-                                        </div>
-                                    </div>
-
-                                    <div class="hotel-room-sm-item">
-                                        <div class="the-hotel-item">
-                                            <h5><A href="page-detail.html#">Marina Bay Sands Hotel</a></h5>
-                                            <div class="d-flex">
-                                                <div>
-                                                    <p class="location">Marina Bay, Singapore</p>
-                                                </div>
-                                                <div>
-                                                    <div class="rating-item rating-xs">
-                                                        <div class="rating-icons">
-                                                            <input type="hidden" class="rating" data-filled="rating-icon fas fa-star rating-rated" data-empty="rating-icon far fa-star" data-fractions="2" data-readonly value="4.5"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="the-room-item">
-                                            <h6>Deluxe Room (Executive)</h6>
-                                            <div class="clearfix">
-                                                <span class="amount"> 2 nights x 1</span>
-                                                <span class="price">$178</span>
-                                            </div>
-                                            <a href="page-detail.html#" class="remove"><i class="fa fa-times"></i></a>
-                                        </div>
-                                    </div>
 
 
-                                    <a href="page-detail.html#" class="btn btn-secondary btn-block mt-20">Check out</a>
+
+
+
+
 
                                 </div>
 

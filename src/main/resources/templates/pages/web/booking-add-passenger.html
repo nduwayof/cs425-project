@@ -249,7 +249,7 @@
                                                             <h5 th:text="${flight.arrivalAirport.airportCode} + ' - ' + ${flight.arrivalAirport.city} + ' , ' + ${flight.arrivalAirport.country}"></h5>
                                                             <p th:text=" 'Flight No.:   ' +  ${flight.flightNumber} + ' , Aircraft : ' + ${flight.aircraft.aircraftModel}  ">  </p>
 
-                                                            <p class="price"><span class="" th:text="'B $' + ${flight.businessCost}">$178</span> <span class="number text-secondary" th:text="'E  $' + ${flight.economyCost}"></span>Per Adult</p>
+                                                            <p class="price"><span class="" th:text="'B $' + ${flight.businessCost}"></span> <span class="number text-secondary" th:text="'E  $' + ${flight.economyCost}"></span>Per Adult</p>
                                                         </div>
                                                     </div>
 
@@ -318,7 +318,7 @@
                                     </div>
                                 </div>
 
-                                <div class="content">
+                                <hr class="content">
 
                                     <ul class="booking-amount-list clearfix mb-20">
                                         <li th:text="${flight.departureTime}">
@@ -350,6 +350,8 @@
 
                                     </div>
 
+                                    <hr></hr>
+
                                     <div class="hotel-room-sm-item" th:each="psg : ${passengers}">
 
                                         <div class="the-room-item">
@@ -365,7 +367,11 @@
                                     <div class="hotel-room-sm-item">
 
                                         <div class="the-room-item">
-                                            <h5 th:text="${totalCost}"></h5>
+                                            <h5>Total</h5>
+
+                                            <div class="clearfix">
+                                                <span class="price" th:text="${totalCost}"></span>
+                                            </div>
 
 
                                         </div>
@@ -373,7 +379,7 @@
 
 
 
-                                    <a href="page-detail.html#" class="btn btn-secondary btn-block mt-20">Check out</a>
+                                    <a th:href="@{'/booking/flight/payment?bookingId=' + ${booking.bookingId} +'&flightId=' + ${flight.flightId}  + '&amount=' + ${totalCost} }" class="btn btn-secondary btn-block mt-20">Pay Now</a>
 
                                 </div>
 

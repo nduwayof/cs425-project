@@ -121,6 +121,7 @@ public class BookingController {
         Flight flight = flightService.findFlightById(flightId);
         Booking booking = bookingService.findBookingById(bookingId);
         List<Passenger> passengers = (List<Passenger>)passengerService.findPassegersByBooking(booking);
+        booking.setPassengers(passengers);
         logger.log(Level.INFO, ">>>>>>> "+ passengers);
         model.addAttribute("flight",flight);
         model.addAttribute("passenger",new Passenger());
