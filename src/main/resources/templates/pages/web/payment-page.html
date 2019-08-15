@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/web/main-page}">
+<head>
+    <title>Uganda Airlines || Bookings</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="page-title-box">
+        <div class="row align-items-center">
+            <div class="col-sm-4">
+                <h4 class="page-title">List of Bookings</h4>
+            </div>
+
+
+            <div class="col-sm-2" >
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/app/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="/app/bookings">Bookings</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+
+                    <a href=""></a>
+                    <div class="table-responsive">
+
+                        <h1>Select you prefered payment option</h1>
+                        <script
+                                src="https://www.paypal.com/sdk/js?client-id=Aavm75h8Rllt74uMThmXJNLSOhH3hrvbqT3ZyIwDDs3QHh4wMjgmJt_dinx-iwc4zEwl0SX93maSuV2g">
+                            var a =55.5;
+                            var flightId =3;
+                        </script>
+
+
+                        <div id="paypal-button-container"></div>
+
+
+                        <script>
+
+                            var bookingId = [[${bookingId}]];
+                            var fair = [[${amount}]];
+
+
+                            paypal.Buttons({
+                                createOrder: function(data, actions) {
+                                    return actions.order.create({
+                                        purchase_units: [{
+                                            amount: {
+
+                                                value: fair
+                                            }
+                                        }]
+                                    });
+                                },
+                                onApprove: function(data, actions) {
+                                    return actions.order.capture().then(function(details) {
+                                        window.location.href = '/customer/payment/paypal?bookingId='.concat(bookingId.toString()).concat("&amount=",fair.toString());
+                                        alert('Transaction completed by ' + details.payer.name.given_name);
+                                        // Call your server to save the transaction
+                                        return fetch('/paypal-transaction-complete', {
+                                            method: 'post',
+                                            headers: {
+                                                'content-type': 'application/json'
+                                            },
+                                            body: JSON.stringify({
+                                                orderID: data.orderID
+                                            })
+                                        });
+                                    });
+                                }
+                            }).render('#paypal-button-container');
+
+                        </script>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myUpdateFunction(s) {
+            if (confirm("Alert!!!!!!\nAre you sure you want to modify flight information?")) {
+
+                window.location.href = '/app/flights/update?flightId='.concat(s);
+
+            }
+
+        }
+        function myDelFunction(s) {
+            if (confirm("Alert!!!!!!\nAre you sure you want to delete the flight".concat(s).concat("?"))) {
+
+                window.location.href = '/app/flights/delete?flightId='.concat(s);
+                window.alert('Successfully Deleted');
+            }
+
+
+        }
+    </script>
+</th:block>
+</body>
+</html>

@@ -27,19 +27,7 @@ public class HomeController {
     public String home(Model model) {
 		 
 		model.addAttribute("airports", airportService.findAllAirport());
-		 
-        try {
-            Passenger passenger = new Passenger() ;
-            passenger.setFirstName("Fabrice");
-            passenger.setLastName("Nduwayo");
-            mailService.sendMailUsingTemplate("fnduwayo@mum.edu",
-                    "nduwayof@gmail.com",
-                    "Uganda Airlines",
-                    new MailMessageTemplate().BookingConfirmation(passenger));
-           
-        }catch (Exception ex){
 
-        }
         return "pages/web/index";
     }
 

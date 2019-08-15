@@ -29,13 +29,17 @@ public class Flight {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime departureTime;
-
+	@NotNull
     private LocalDateTime arrivalTime;
 
+	@NotNull(message = "Departure Airport Required")
     @OneToOne
-    private Airport departureAirport;
 
+    private Airport departureAirport;
+	
+	@NotNull(message = "Arrival Airport Required")
     @OneToOne
+
     private Airport arrivalAirport;
 
     @OneToOne
@@ -43,7 +47,8 @@ public class Flight {
 
     @OneToMany(mappedBy = "flight")
     private List<FlightCost> flightCosts;
-
+	
+	@NotNull
     private Double economyCost;
 
     private Double businessCost;
