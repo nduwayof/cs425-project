@@ -1,11 +1,9 @@
-package com.ugandaairlines.ugair.configurations;
+package com.ugandaairlines.ugair.config;
 
 import com.ugandaairlines.ugair.security.domain.EUserRole;
-import com.ugandaairlines.ugair.security.service.UserDetailsServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,14 +18,17 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, proxyTargetClass = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserDetailsService userDetailsServiceImplementation;
 
+    private DataSource dataSource;
+
     @Autowired
     public WebSecurityConfig(UserDetailsService userDetailsServiceImplementation, DataSource dataSource) {
         this.userDetailsServiceImplementation = userDetailsServiceImplementation;
+        this.dataSource = dataSource;
     }
 
     @Bean
@@ -54,13 +55,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/booking/**").permitAll()
                 .antMatchers("/administrator/login").permitAll()
-                .antMatchers("/app/**").hasRole(EUserRole.ADMINISTRATOR.toString())
+                .antMatchers("/app/**").access("hasRole('ROLE_ADMINISTRATOR') or hasRole('ROLE_CUSTOMER')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/administrator/login")
                 .defaultSuccessUrl("/app/dashboard")
-                .failureUrl("/administrator/login/failed")
+                .failureUrl("/administrator/login?error")
                 .permitAll()
                 .and()
                 .logout()

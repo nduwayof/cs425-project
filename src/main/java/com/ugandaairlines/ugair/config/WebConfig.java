@@ -1,4 +1,4 @@
-package com.ugandaairlines.ugair.configurations;
+package com.ugandaairlines.ugair.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

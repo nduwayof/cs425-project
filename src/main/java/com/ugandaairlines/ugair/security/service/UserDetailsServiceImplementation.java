@@ -6,17 +6,22 @@ import com.ugandaairlines.ugair.security.repository.IUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
+
 /**
  * The type User details service implementation.
  * @author nduwayofabrice
  */
 @Service
+@Transactional
 public class UserDetailsServiceImplementation implements UserDetailsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImplementation.class);
@@ -33,18 +38,16 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public UserDetailsServiceImplementation() {
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User with the following email : " + username + " not found"));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+                getAuthorities(user));
     }
 
-
-    @Override
-    @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String email){
-        User user = userRepository.findByEmail(email);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found.");
-        }
-        LOGGER.info("loadUserByUsername() : {}", email);
-        return new PrincipalDetails(user);
+    private Collection<? extends GrantedAuthority> getAuthorities(User user) {
+        String [] userRoles = user.getRoles().stream().map(role -> role.getUserRole().name()).toArray(String[]::new);
+        return AuthorityUtils.createAuthorityList(userRoles);
     }
 }

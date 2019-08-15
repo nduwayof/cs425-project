@@ -28,13 +28,13 @@
                 <a href="/administrator/login" class="logo logo-admin">
                     <img th:src="@{/web/images/uganda-logo-1.png}" alt="" height="90" src=""></a>
             </div>
-            <form class="form-horizontal m-t-30" action="/administrator/authenticate" method="post">
+            <form class="form-horizontal m-t-30" th:action="@{/administrator/login}" method="post">
                 <div class="col-md-12">
                     <div th:if="${param.error}" class="alert alert-dismissible alert-danger">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        Invalid username and/or password.
+                        Invalid username or password.
                     </div>
-                    <div th:if="${param.logout}" class="alert alert-dismissible alert-primary">
+                    <div th:if="${param.logout}" class="alert alert-dismissible alert-success">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         You have been signed out.
                     </div>

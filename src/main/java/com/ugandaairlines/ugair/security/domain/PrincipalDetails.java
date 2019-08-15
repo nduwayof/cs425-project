@@ -3,6 +3,7 @@ package com.ugandaairlines.ugair.security.domain;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class PrincipalDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getRoles().stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getUserRole().toString()))
+                .map(authority -> new SimpleGrantedAuthority(authority.getUserRole().getDescription()))
                 .collect(Collectors.toList());
     }
 
@@ -60,7 +61,4 @@ public class PrincipalDetails implements UserDetails {
         return user.isActive();
     }
 
-    public User getUserDetails() {
-        return user;
-    }
 }
