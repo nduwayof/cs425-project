@@ -5,7 +5,9 @@ import com.ugandaairlines.ugair.airport.model.Airport;
 import com.ugandaairlines.ugair.airport.service.IAirportService;
 import com.ugandaairlines.ugair.booking.model.Booking;
 import com.ugandaairlines.ugair.booking.model.EBookingStatus;
+import com.ugandaairlines.ugair.booking.model.Payment;
 import com.ugandaairlines.ugair.booking.service.IBookingService;
+import com.ugandaairlines.ugair.booking.service.IPaymentService;
 import com.ugandaairlines.ugair.flight.model.Flight;
 import com.ugandaairlines.ugair.flight.service.IFlightService;
 import com.ugandaairlines.ugair.person.model.Customer;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -43,13 +46,19 @@ public class BookingController {
 
     private IPassengerService passengerService;
 
+    private IPaymentService paymentService;
     @Autowired
-    public BookingController(IPassengerService passengerService,IBookingService bookingService, IFlightService flightService, IAirportService airportService){
+    public BookingController(IBookingService bookingService, IFlightService flightService, IAirportService airportService, IPassengerService passengerService, IPaymentService paymentService) {
+        this.logger = logger;
         this.bookingService = bookingService;
         this.flightService = flightService;
         this.airportService = airportService;
         this.passengerService = passengerService;
+        this.paymentService = paymentService;
     }
+
+
+
 
    @GetMapping(path = {"/booking/flight/search"})
    public String bookingFlightSearchResults(@RequestParam Map<String , String> reqParams, Model model){
@@ -139,6 +148,34 @@ public class BookingController {
         return "pages/web/booking-add-passenger";
     }
 
+
+//    Controller to manage payments
+
+
+
+    @GetMapping(path = "/booking/flight/payment")
+    public ModelAndView payment(@RequestParam("bookingId") Integer bookingId, @RequestParam("amount") Double amount) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("bookingId", bookingId);
+        modelAndView.addObject("amount", amount);
+
+        modelAndView.setViewName("pages/web/payment-page");
+        return modelAndView;
+    }
+
+    @RequestMapping("/customer/payment/paypal")
+    public String Dposit(@RequestParam("bookingId") Integer bookingId, @RequestParam("amount") Double amount){
+        System.out.print("\n\n\n\nn\n\nn I am here today\n\n\n\n\n");
+        Booking booking= bookingService.findBookingById(bookingId);
+
+        booking.setBookingStatus(EBookingStatus.COMPLETE);
+        bookingService.saveBooking(booking);
+        Payment payment = new Payment("PayPalOrCard",booking,amount);
+        paymentService.savePayment(payment);
+
+        return "pages/web/payment-successful-page";
+    }
 
 
 

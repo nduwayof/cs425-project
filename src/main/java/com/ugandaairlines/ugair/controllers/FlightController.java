@@ -137,12 +137,6 @@ public class FlightController {
         return modelAndView;
     }
 
-    @GetMapping(path = "/booking/flight/payment")
-    public ModelAndView payment(@RequestParam("bookingId") Integer bookingId, @RequestParam("amount") Double amount) {
-        ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("pages/app/flights/payment");
-        return modelAndView;
-    }
 
 }
