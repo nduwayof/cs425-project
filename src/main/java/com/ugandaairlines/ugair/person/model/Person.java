@@ -1,7 +1,10 @@
 package com.ugandaairlines.ugair.person.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @MappedSuperclass
 public class Person {
     @Id
