@@ -4,6 +4,8 @@ import com.ugandaairlines.ugair.airport.model.Aircraft;
 import com.ugandaairlines.ugair.airport.model.Airport;
 import com.ugandaairlines.ugair.airport.service.IAircraftService;
 import com.ugandaairlines.ugair.airport.service.IAirportService;
+import com.ugandaairlines.ugair.booking.model.Booking;
+import com.ugandaairlines.ugair.booking.service.IBookingService;
 import com.ugandaairlines.ugair.flight.model.Flight;
 import com.ugandaairlines.ugair.flight.service.IFlightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +25,20 @@ public class FlightController {
     private IAirportService airportService;
     private IAircraftService aircraftService;
     private IFlightService flightService;
-
+    private IBookingService iBookingService;
     @Autowired
     public FlightController(IAirportService airportService,
                             IAircraftService aircraftService,
-                            IFlightService flightService) {
+                            IFlightService flightService,
+                            IBookingService iBookingService) {
         this.airportService = airportService;
         this.aircraftService = aircraftService;
         this.flightService = flightService;
+        this.iBookingService = iBookingService;
     }
+
+
+
 
     @GetMapping(path = "/app/flight/new")
     public String addNewFlight(Model model) {
@@ -90,7 +97,7 @@ public class FlightController {
     }
 
     @GetMapping(path = "/app/flights")
-    public ModelAndView customerList(@RequestParam(defaultValue = "0") int pageno) {
+    public ModelAndView flightList(@RequestParam(defaultValue = "0") int pageno) {
         ModelAndView modelAndView = new ModelAndView();
         Page<Flight> flights = flightService.findAllFlights(pageno);
         long numberOfFlights = flights.getTotalElements();
@@ -114,5 +121,20 @@ public class FlightController {
         return modelAndView;
     }
 
+//    ###################################
+//    The code below this line is meant to be moved to Booking controller
+
+
+    @GetMapping(path = "/app/bookings")
+    public ModelAndView bookingList(@RequestParam(defaultValue = "0") int pageno) {
+        ModelAndView modelAndView = new ModelAndView();
+        Iterable<Booking> bookings = iBookingService.findAllBookings();
+        //long numberOfFlights = bookings.getTotalElements();
+        modelAndView.addObject("currPageNo", pageno);
+        modelAndView.addObject("bookings", bookings);
+        modelAndView.addObject("flashBack", "/app/bookings");
+        modelAndView.setViewName("pages/app/flights/bookings");
+        return modelAndView;
+    }
 
 }
