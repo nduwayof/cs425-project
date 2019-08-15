@@ -1,6 +1,5 @@
 package com.ugandaairlines.ugair.security.service;
 
-import com.ugandaairlines.ugair.security.domain.PrincipalDetails;
 import com.ugandaairlines.ugair.security.domain.User;
 import com.ugandaairlines.ugair.security.repository.IUserRepository;
 import org.slf4j.Logger;
@@ -23,8 +22,6 @@ import java.util.Collection;
 @Service
 @Transactional
 public class UserDetailsServiceImplementation implements UserDetailsService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImplementation.class);
 
     private IUserRepository userRepository;
 
