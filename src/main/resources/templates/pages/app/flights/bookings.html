@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/app/admin-main-page}">
+<head>
+    <title>Uganda Airlines || Bookings</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="page-title-box">
+        <div class="row align-items-center">
+            <div class="col-sm-4">
+                <h4 class="page-title">List of Bookings</h4>
+            </div>
+            <div class="col-sm-3" >
+                <form action="#" th:action="@{/bookings/search}"  method="get"
+                      class="form-inline ml-auto">
+                    <div class="md-form my-0">
+                        <input class="form-control" type="text" name="search" required placeholder="Flight Number only"
+                               aria-label="Search">
+                        <button class="btn btn-outline-white btn-md my-0 ml-sm-2"
+                                type="submit">Search</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-sm-2" style="text-align: center;">
+                <a href="/app/flight/new"  > <button class="btn btn-info btn-md  glyphicon glyphicon-pencil "
+                >&nbsp;Add Flight</button></a>
+
+            </div>
+            <div class="col-sm-2" >
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="/app/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="/app/bookings">Bookings</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+
+                    <a href=""></a>
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th>Flight Number</th>
+                                <th>From</th>
+                                <th>Destination</th>
+                                <th>Departure Time</th>
+                                <th>Landing Time</th>
+                                <th>Economy Fair</th>
+                                <th>Business Fair</th>
+                                <th>AirCraft</th>
+                                <th colspan="2">Operations</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="booking,istat:${bookings}">
+
+<!--                                <td th:text="${booking.}"></td>-->
+<!--                                <td th:text="${flight.getDepartureAirport().airportName+' '+flight.getDepartureAirport().city+','+flight.getDepartureAirport().country}"></td>-->
+<!--                                <td th:text="${flight.getArrivalAirport().airportName+' '+flight.getArrivalAirport().city+','+flight.getArrivalAirport().country}"></td>-->
+<!--                                <td th:text="${flight.getDepartureTime()}"></td>-->
+<!--                                <td th:text="${flight.getArrivalTime()}"></td>-->
+<!--                                <td th:text="${flight.getEconomyCost()}"></td>-->
+<!--                                <td th:text="${flight.getBusinessCost()}"></td>-->
+<!--                                <td th:text="${flight.getAircraft().aircraftModel+' '+flight.getAircraft().registrationCode}"></td>-->
+<!--                                &lt;!&ndash;Adding a button for update &ndash;&gt;-->
+
+<!--                                <td>-->
+<!--                                    <button class="btn btn-warning btn-sm  glyphicon glyphicon-pencil "-->
+<!--                                            th:onclick="'javascript:myUpdateFunction(\''+ ${flight.flightId} +'\');'">&nbsp;Update</button>-->
+<!--                                </td>-->
+<!--                                <td>-->
+<!--                                    <button class="btn btn-danger btn-sm  glyphicon glyphicon-remove"-->
+<!--                                            th:onclick="'javascript:myDelFunction(\''+ ${flight.flightId} +'\');'">&nbsp;Delete</button>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+                            </tbody>
+                        </table>
+
+                        <span th:if="${bookings.totalPages>=1}">
+                            <div>
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Pages: </a>
+                    </li>
+                    <li th:each="i : ${#numbers.sequence(1, bookings.totalPages)}"
+                        th:class="${currPageNo}==${ i - 1 }?'page-item active':'page-item' ">
+                        <a th:href="@{${flashBack}(pageno=${i - 1})}"
+                           th:text="${i}" class="page-link"></a>
+                    </li>
+                </ul>
+            </div>
+    </span>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myUpdateFunction(s) {
+            if (confirm("Alert!!!!!!\nAre you sure you want to modify flight information?")) {
+
+                window.location.href = '/app/flights/update?flightId='.concat(s);
+
+            }
+
+        }
+        function myDelFunction(s) {
+            if (confirm("Alert!!!!!!\nAre you sure you want to delete the flight".concat(s).concat("?"))) {
+
+                window.location.href = '/app/flights/delete?flightId='.concat(s);
+                window.alert('Successfully Deleted');
+            }
+
+
+        }
+    </script>
+</th:block>
+</body>
+</html>

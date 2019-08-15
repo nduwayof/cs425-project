@@ -1,12 +1,15 @@
 package com.ugandaairlines.ugair.booking.service;
 
 import com.ugandaairlines.ugair.booking.model.Booking;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface IBookingService {
 	
-	public abstract Booking saveBooking(Booking booking);
-	public abstract Iterable<Booking> findAllBookings();
-	public abstract Booking findBookingById(Integer bookingId);
-	public abstract void deleteBooking(Booking booking);
+	 Booking saveBooking(Booking booking);
+	 Iterable<Booking> findAllBookings();
+	 Page<Booking> findAllBookings(int pageNo);
+	 Booking findBookingById(Integer bookingId);
+	 void deleteBooking(Booking booking);
 
 }

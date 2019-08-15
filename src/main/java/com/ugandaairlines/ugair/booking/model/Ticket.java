@@ -16,4 +16,5 @@ public class Ticket {
     private Flight flight;
     @OneToOne
     private Booking booking;
+
 }
