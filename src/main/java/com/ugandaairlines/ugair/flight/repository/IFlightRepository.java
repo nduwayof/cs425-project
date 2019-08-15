@@ -1,6 +1,8 @@
 package com.ugandaairlines.ugair.flight.repository;
 
 import com.ugandaairlines.ugair.airport.model.Airport;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +22,12 @@ public interface IFlightRepository extends JpaRepository<Flight, Integer>{
     @Modifying
     @Query(value = "select f from Flight  f where f.departureAirport = :departureAirport and f.arrivalAirport = :arrivalAirport and f.departureTime >= :departureTime and f.arrivalTime >= :arrivalTime   ")
     public Collection<Flight> flightBookingSearch(@Param("departureAirport") Airport depatureAirport, @Param("arrivalAirport") Airport arrivalAirport, @Param("departureTime") LocalDateTime dapertureDate, @Param("arrivalTime") LocalDateTime arrivalDate);
+
+
+    public Page<Flight>
+    findFlightsByFlightNumberContainingOrArrivalAirportCityContainingOrDepartureAirportCityOrDepartureAirportAirportNameContainingOrArrivalAirportAirportNameContainingOrDepartureAirportCountryContainingOrArrivalAirportCountryContainingOrAircraftAircraftModelContainingOrAircraftRegistrationCodeContaining
+            (String flightNumber,String arrivalCity,String departureCity,String departureAirport,String arrivalAirport,String departureCountry,String arrivalCountry,String aircraftModel, String aircraftRegistrationCode,Pageable tName);
+
+
 
 }
