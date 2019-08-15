@@ -129,9 +129,12 @@ public class BookingController {
         if (addMeAsPassenger.equals("Yes")){
             customer = booking.getCustomer();
         }
+        Double totalCost = bookingService.calculateTotalCost(booking);
+        booking.setBookingCost(totalCost);
+        bookingService.saveBooking(booking);
         model.addAttribute("customer",customer);
         model.addAttribute("passengers", passengers);
-        model.addAttribute("totalCost",bookingService.calculateTotalCost(booking));
+        model.addAttribute("totalCost",totalCost);
 
         return "pages/web/booking-add-passenger";
     }

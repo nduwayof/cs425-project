@@ -47,39 +47,36 @@
                         <table class="table mb-0">
                             <thead>
                             <tr>
-                                <th>Flight Number</th>
-                                <th>From</th>
-                                <th>Destination</th>
-                                <th>Departure Time</th>
-                                <th>Landing Time</th>
-                                <th>Economy Fair</th>
-                                <th>Business Fair</th>
-                                <th>AirCraft</th>
+                                <th>#</th>
+                                <th>Customer Name</th>
+                                <th>email</th>
+                                <th>Booking Cost</th>
+                                <th>Booking Status</th>
+                                <th>Flight</th>
+
                                 <th colspan="2">Operations</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="booking,istat:${bookings}">
+                            <tr th:each="booking,iterStat:${bookings}">
 
-<!--                                <td th:text="${booking.}"></td>-->
-<!--                                <td th:text="${flight.getDepartureAirport().airportName+' '+flight.getDepartureAirport().city+','+flight.getDepartureAirport().country}"></td>-->
-<!--                                <td th:text="${flight.getArrivalAirport().airportName+' '+flight.getArrivalAirport().city+','+flight.getArrivalAirport().country}"></td>-->
-<!--                                <td th:text="${flight.getDepartureTime()}"></td>-->
-<!--                                <td th:text="${flight.getArrivalTime()}"></td>-->
-<!--                                <td th:text="${flight.getEconomyCost()}"></td>-->
-<!--                                <td th:text="${flight.getBusinessCost()}"></td>-->
-<!--                                <td th:text="${flight.getAircraft().aircraftModel+' '+flight.getAircraft().registrationCode}"></td>-->
-<!--                                &lt;!&ndash;Adding a button for update &ndash;&gt;-->
+                                <td th:text="${iterStat.count}"></td>
+                                                                <td th:text="${booking.customer.firstName} + ' ' + ${booking.customer.middleName} + ' ' +  ${booking.customer.lastName}"></td>
+                                                                <td th:text="${booking.customer.email}"></td>
+                                                                <td th:text="${booking.bookingCost}"></td>
+                                                                <td th:text="${booking.bookingStatus}"></td>
+                                                                <td th:text="${booking.flight.flightNumber}"></td>
 
-<!--                                <td>-->
-<!--                                    <button class="btn btn-warning btn-sm  glyphicon glyphicon-pencil "-->
-<!--                                            th:onclick="'javascript:myUpdateFunction(\''+ ${flight.flightId} +'\');'">&nbsp;Update</button>-->
-<!--                                </td>-->
-<!--                                <td>-->
-<!--                                    <button class="btn btn-danger btn-sm  glyphicon glyphicon-remove"-->
-<!--                                            th:onclick="'javascript:myDelFunction(\''+ ${flight.flightId} +'\');'">&nbsp;Delete</button>-->
-<!--                                </td>-->
-<!--                            </tr>-->
+
+                                                                <td>
+                                                                    <button class="btn btn-warning btn-sm  glyphicon glyphicon-pencil "
+                                                                            th:onclick="'javascript:myUpdateFunction(\''+ ${booking.bookingId} +'\');'">&nbsp;Update</button>
+                                                                </td>
+                                                                <td>
+                                                                    <button class="btn btn-danger btn-sm  glyphicon glyphicon-remove"
+                                                                            th:onclick="'javascript:myDelFunction(\''+ ${booking.bookingId} +'\');'">&nbsp;Cancle</button>
+                                                                </td>
+                                                            </tr>
                             </tbody>
                         </table>
 
