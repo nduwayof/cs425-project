@@ -257,7 +257,7 @@
                                                             <h5 th:text="${flight.arrivalAirport.airportCode} + ' - ' + ${flight.arrivalAirport.city} + ' , ' + ${flight.arrivalAirport.country}"></h5>
                                                             <p th:text=" 'Flight No.:   ' +  ${flight.flightNumber} + ' , Aircraft : ' + ${flight.aircraft.aircraftModel}  ">  </p>
 
-                                                            <p class="price"><span class="" th:text="'B $' + ${flight.businessCost}">$178</span> <span class="number text-secondary" th:text="'E  $' + ${flight.economyCost}"></span>Per Adult</p>
+                                                            <p class="price"><span class="" th:text="'B $' + ${flight.businessCost}">$178</span> <span class="number text-secondary" th:text="'E  $' + ${flight.economyCost}"></span> Per Adult</p>
                                                         </div>
                                                     </div>
 
@@ -283,7 +283,7 @@
 
                                                     <div class="col-5 col-sm-4 col-md-4">
                                                         <div class="form-group form-spin-group mb-5">
-                                                            <label class="line12 font13 spacing-05 mt-5 mb-10 block">Passengers</label>
+                                                            <label class="line12 font13 spacing-05 mt-5 mb-10 block">Added Passengers</label>
                                                             <div class="form-icon-left">
                                                                 <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
                                                                 <input type="text" class="form-control touch-spin-03 form-readonly-control" value="0" readonly />

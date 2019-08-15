@@ -275,10 +275,10 @@
 
                                                     <div class="col-5 col-sm-4 col-md-4">
                                                         <div class="form-group form-spin-group mb-5">
-                                                            <label class="line12 font13 spacing-05 mt-5 mb-10 block">Passengers</label>
+                                                            <label class="line12 font13 spacing-05 mt-5 mb-10 block">Added Passengers</label>
                                                             <div class="form-icon-left">
                                                                 <span class="icon-font"><i class="dripicons-user text-muted"></i></span>
-                                                                <input type="text" class="form-control touch-spin-03 form-readonly-control" value="1" readonly />
+                                                                <input type="text" class="form-control touch-spin-03 form-readonly-control" th:value="${passengers.size()}" readonly />
                                                             </div>
                                                         </div>
 
@@ -321,15 +321,26 @@
                                 <hr class="content">
 
                                     <ul class="booking-amount-list clearfix mb-20">
-                                        <li th:text="${flight.departureTime}">
+                                        <li th:text="'Dep: '">
 
                                         </li>
-                                        <li></li>
 
-                                        <li class="text-right" th:text="${flight.arrivalTime}">
+
+                                        <li class="text-right" th:text="${flight.departureTime}">
 
                                         </li>
                                     </ul>
+
+                                <ul class="booking-amount-list clearfix mb-20">
+                                    <li th:text="'Arr:'">
+
+                                    </li>
+
+
+                                    <li class="text-right" th:text="${flight.arrivalTime}">
+
+                                    </li>
+                                </ul>
 
                                     <div class="hotetl-room-sm-item">
                                         <div class="he-hotel-item">

@@ -82,6 +82,14 @@ public class Booking {
         this.customer = customer;
     }
 
+    public Double getBookingCost() {
+        return bookingCost;
+    }
+
+    public void setBookingCost(Double bookingCost) {
+        this.bookingCost = bookingCost;
+    }
+
     @Override
     public String toString() {
         return "Booking{" +
