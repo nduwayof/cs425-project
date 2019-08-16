@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @Entity
@@ -15,15 +16,15 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
-	@NotBlank(messange = "First Name Erquired")
+	@NotBlank(message = "First Name Erquired")
     private String firstName;
 	
     private String middleName;
-	@NotBlank(messange = "Last Name Erquired")
+	@NotBlank(message = "Last Name Erquired")
     private String lastName;
     private EGender gender;
     private String phoneNumber;
-	@NotBlank(messange = "Email Erquired")
+	@NotBlank(message = "Email Erquired")
     private String email;
 
 }
