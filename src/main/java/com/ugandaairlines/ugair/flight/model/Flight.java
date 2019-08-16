@@ -29,13 +29,11 @@ public class Flight {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime departureTime;
-	@NotNull
+	
     private LocalDateTime arrivalTime;
 
 	@NotNull(message = "Departure Airport Required")
     @OneToOne
-	
-	@NotNull
     private Airport departureAirport;
 	
 	@NotNull(message = "Arrival Airport Required")
