@@ -15,7 +15,7 @@ public class Booking {
 
     @OneToOne
     private Flight flight;
-	@NotNull(message = "Bokking cost Required")
+	
     private Double bookingCost;
     private EBookingStatus bookingStatus;
 
