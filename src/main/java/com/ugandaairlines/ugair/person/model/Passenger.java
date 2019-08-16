@@ -21,7 +21,6 @@ public class Passenger {
     private String middleName;
 	@NotBlank(messange = "Last First Name required")
     private String lastName;
-	@NotNull
     private EGender gender;
     private String phoneNumber;
     private String email;
